@@ -144,11 +144,15 @@
     <p class="cap">Cada línea es qué tan cerca quedaste de la meta de ese pilar cada semana. <b>Arriba de 100% = superaste la meta.</b> Sube = mejor que la semana pasada. Las tres vienen subiendo, lideradas por el entreno.</p>
   </div>
 
-  <!-- BALANCE -->
-  <div class="sec fade"><h2>Balance atlético</h2><span class="ln"></span><span class="tg">dónde estás fuerte</span></div>
-  <div class="card full fade">
-    <div class="radar-wrap"><svg id="radar" viewBox="0 0 280 230"></svg></div>
-    <p class="cap">Nivel por capacidad. Color = ahora · estela punteada = semana pasada. <b>Fuerza y volumen dominan</b>; Running es el eje flojo (meta 2 salidas/sem).</p>
+  <!-- BALANCE + APOYO · par a par para cruzar -->
+  <div class="sec fade"><h2>Balance & apoyo del stack</h2><span class="ln"></span><span class="tg">capacidad vs. hacia dónde apoya el suplemento</span></div>
+  <div class="grid2">
+    <div class="card fade"><h3>Balance atlético <span class="now">capacidad</span></h3>
+      <div class="radar-wrap"><svg id="radar" viewBox="0 0 280 230"></svg></div>
+      <p class="cap">Nivel por capacidad. Color = ahora · estela = semana pasada. Fuerza y volumen dominan; <b>Running flojo</b>.</p></div>
+    <div class="card fade"><h3>Apoyo del stack <span class="now">suplementos</span></h3>
+      <div class="radar-wrap"><svg id="suppRadar" viewBox="0 0 280 230"></svg></div>
+      <p class="cap">Hacia dónde apunta cada suplemento. <b>El cruce:</b> mirá dónde tu capacidad está baja y el stack NO la sostiene (Running y Comida no tienen apoyo constante).</p></div>
   </div>
 
   <!-- ALIMENTACIÓN -->
@@ -164,15 +168,11 @@
       <p class="cap">La grasa se dispara en días sueltos, casi siempre fuentes ocultas.</p></div>
   </div>
 
-  <!-- SUPLEMENTOS -->
-  <div class="sec fade"><h2>Suplementos</h2><span class="ln"></span><span class="tg">hacia dónde apoya el stack · constancia</span></div>
-  <div class="grid2">
-    <div class="card fade"><h3>Apoyo del stack <span class="now">hacia dónde inclina</span></h3>
-      <div class="radar-wrap"><svg id="suppRadar" viewBox="0 0 280 230"></svg></div>
-      <p class="cap">Cada suplemento apunta a un objetivo. Hoy el stack se inclina a <b>foco, recuperación y desempeño</b>; descanso, comida y fuerza están más flojos en constancia.</p></div>
-    <div class="card fade"><h3>Constancia · días tomado <span class="now">últimas semanas</span></h3>
-      <div id="c-supp" class="chart"></div>
-      <p class="cap">Registrar la toma es lo que falta. <b>Melena de León: descontinuada.</b> QNT=comida, Creatina=fuerza, Omega=recuperación, Ereboost=foco, Energy=desempeño, Magnesio=descanso.</p></div>
+  <!-- SUPLEMENTOS · constancia -->
+  <div class="sec fade"><h2>Suplementos</h2><span class="ln"></span><span class="tg">constancia de la toma</span></div>
+  <div class="card full fade"><h3>Constancia · días tomado <span class="now">últimas semanas</span></h3>
+    <div id="c-supp" class="chart"></div>
+    <p class="cap">Registrar la toma es lo que falta. <b>Melena de León: descontinuada.</b> QNT=comida, Creatina=fuerza, Omega=recuperación, Ereboost=foco, Energy=desempeño, Magnesio=descanso.</p>
   </div>
 
   <!-- RENDIMIENTO -->
