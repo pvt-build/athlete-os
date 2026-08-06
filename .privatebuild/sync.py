@@ -10,6 +10,7 @@ El workflow de GitHub lo corre cada sábado AM.
 import os, sys, json, re
 from datetime import datetime, date, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 try:
     import requests
@@ -20,6 +21,7 @@ except ImportError:
 
 NOTION_TOKEN   = os.environ.get("NOTION_TOKEN", "")
 NOTION_VERSION = "2022-06-28"
+TZ             = ZoneInfo("America/Santiago")  # el sistema vive en hora Chile
 BASE_DATE      = date(2026, 6, 19)          # día 1 del sistema
 REPO_DIR       = Path(__file__).parent.parent
 HTML_FILE      = REPO_DIR / "index.html"
@@ -60,6 +62,7 @@ def dt(p, n):    x = (p.get(n) or {}).get("date"); return x["start"][:10] if x a
 def chk(p, n):   return bool((p.get(n) or {}).get("checkbox"))
 def sel(p, n):   x = (p.get(n) or {}).get("select"); return x["name"] if x else None
 def multi(p, n): return [o["name"] for o in ((p.get(n) or {}).get("multi_select") or [])]
+def now_cl():    return datetime.now(TZ)
 def di(iso):     return (date.fromisoformat(iso) - BASE_DATE).days
 def avg(xs):     xs = [x for x in xs if x is not None]; return sum(xs)/len(xs) if xs else 0
 
@@ -82,7 +85,7 @@ def load():
 
 # ─── Cálculo ─────────────────────────────────────────────────────────────────
 def build(ci, co, en, ru):
-    today = date.today()
+    today = now_cl().date()
     span = di(today.isoformat()) + 1
     nweeks = (di(today.isoformat()) // 7) + 1
 
@@ -211,7 +214,7 @@ def build(ci, co, en, ru):
     rng = f"19 jun → {today.day} {MESES[today.month-1]} {today.year}"
     return {
         "meta":{"base":BASE_DATE.isoformat(),"day":span,"span":span,"range":rng,
-                "lastSync":datetime.now().strftime("%Y-%m-%d %H:%M")},
+                "lastSync":now_cl().strftime("%Y-%m-%d %H:%M")},
         "kpis":kpis,"weight":weight,"pushMax":pushMax,"pullMax":pullMax,"legsMax":legsMax,
         "volWeek":volWeek,"nutri":nutri,"macros":macros,"sleep":sleep,"energia":energia,"weeks":weeks,
         "pillars":pillars,"pillarWeeks":[f"Sem {i+1}" for i in range(nweeks)],
