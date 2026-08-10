@@ -33,10 +33,13 @@ DB = {
     "running": "edca04494509421fb0dbdf3d0b2a2f2e",
 }
 MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]
-SUPP_CAT   = {"Creatina":"Fuerza","Omega 3":"Recuperación","Ereboost":"Foco",
-              "Energy Electrolitos":"Desempeño","Magnesio":"Descanso","QNT Proteina":"Comida"}
-SUPP_LABEL = {"Energy Electrolitos":"Energy + Elec.","QNT Proteina":"QNT Isolate"}
-CAT_ORDER  = ["Fuerza","Recuperación","Foco","Desempeño","Descanso","Comida"]
+SUPP_CAT   = {"Creatina":"Fuerza","Omega 3":"Recuperación","Ereboost":"Testosterona",
+              "Energy Electrolitos":"Fatiga","Magnesio":"Sueño","QNT Proteina":"Proteína",
+              "Melena de Leon":"Foco","Ashwagandha":"Cortisol","Adaptogenos":"Cortisol",
+              "Eunoe Noche":"Sueño","Multivitaminico":"Recuperación"}
+SUPP_LABEL = {"Energy Electrolitos":"Energy + Elec.","QNT Proteina":"QNT Isolate",
+              "Eunoe Noche":"Eunoé","Melena de Leon":"Melena","Adaptogenos":"Adaptógenos"}
+CAT_ORDER  = ["Fuerza","Recuperación","Testosterona","Fatiga","Sueño","Proteína","Foco","Cortisol"]
 
 # ─── Notion helpers ──────────────────────────────────────────────────────────
 def headers():
@@ -194,8 +197,8 @@ def build(ci, co, en, ru):
         {"lbl":"Proteína prom","pd":"danger" if prot_avg<160 else ("warn" if prot_avg<180 else "good"),
          "badge":(f"▼ {180-prot_avg}" if prot_avg<180 else "✓"),"bcls":"down" if prot_avg<180 else "up",
          "val":f"{prot_avg}","unit":" g","meta":f"meta 180 · {prot_avg-180}"},
-        {"lbl":"Calorías prom","pd":"warn","badge":"déficit" if kcal_avg<2500 else "ok","bcls":"warnb",
-         "val":f"{kcal_avg}","unit":"","meta":"meta 2500–2600"},
+        {"lbl":"Calorías prom","pd":"warn" if kcal_avg>2800 else "good","badge":"sobre tope" if kcal_avg>2800 else "ok","bcls":"warnb",
+         "val":f"{kcal_avg}","unit":"","meta":"meta ≤2.800 (tope)"},
         {"lbl":"Volumen semanal","pd":"good","badge":(f"▲ {vol_pct}%" if vol_pct>=0 else f"▼ {abs(vol_pct)}%"),
          "bcls":"up" if vol_pct>=0 else "down","val":f"{vol_now:.1f}","unit":"k kg","meta":"meta ~40k"},
         {"lbl":"Running semanal","pd":"good" if week_runs>=2 else "warn",
