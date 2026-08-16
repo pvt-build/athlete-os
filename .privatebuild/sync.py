@@ -90,7 +90,9 @@ def load():
 def build(ci, co, en, ru):
     today = now_cl().date()
     span = di(today.isoformat()) + 1
-    nweeks = (di(today.isoformat()) // 7) + 1
+    alldates = [r["f"] for r in (ci + co + en + ru) if r.get("f")]
+    last_iso = max(alldates) if alldates else today.isoformat()
+    nweeks = (di(last_iso) // 7) + 1  # hasta el último dato real, no la semana en curso vacía
 
     # peso
     peso_by = {}
@@ -129,13 +131,12 @@ def build(ci, co, en, ru):
         if r["f"] and r["energia"] is not None:
             w = di(r["f"])//7
             if 0 <= w < nweeks: enerW[w].append(r["energia"])
-    week_runs = 0
     for r in ru:
         if r["f"] and r["km"]:
             w = di(r["f"])//7
             if 0 <= w < nweeks:
                 kmW[w] += r["km"]
-                if w == nweeks-1: week_runs += 1
+    week_runs = len([r for r in ru if r["f"] and r["km"] and 0 <= (today - date.fromisoformat(r["f"])).days < 7])
     volWeek = [round(v/1000, 1) for v in volW]
     pillars = [[round(min(150, volW[i]/40000*100)) for i in range(nweeks)],
                [round(min(150, avg(protW[i])/180*100)) for i in range(nweeks)],
