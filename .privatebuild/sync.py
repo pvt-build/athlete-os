@@ -160,6 +160,10 @@ def load():
     ru = [{"f": dt(p["properties"],"Fecha"), "km": num(p["properties"],"Distancia (km)"),
            "pace": num(p["properties"],"Ritmo (min/km)"), "fc": num(p["properties"],"FC Promedio (lpm)")}
           for p in query_db(DB["running"])]
+    # Deriva kcal cuando falta pero hay macros (4·P + 4·C + 9·G): un día con comida no se cae del dashboard por un campo kcal vacío
+    for r in co:
+        if r["kcal"] is None and r["prot"] is not None and r["carbs"] is not None and r["grasa"] is not None:
+            r["kcal"] = round(4*r["prot"] + 4*r["carbs"] + 9*r["grasa"])
     return ci, co, en, ru
 
 # ─── Cálculo ─────────────────────────────────────────────────────────────────
@@ -254,9 +258,13 @@ def build(ci, co, en, ru):
     ener_recent = [r["energia"] for r in ci if r["f"] and r["energia"] is not None and date.fromisoformat(r["f"]) >= today-timedelta(days=14)]
     sleep_recent = [v for f,v in sleep if date.fromisoformat(f) >= today-timedelta(days=14)]
     clamp = lambda x: round(max(0.1, min(1.0, x)), 2)
-    cr = [clamp((pullMax[-1][1] if pullMax else 120)/160), clamp((volW[nweeks-1] if nweeks else 0)/60000),
-          clamp(week_runs/2), clamp(avg(prot_recent)/180), clamp(avg(sleep_recent)/8), clamp(avg(ener_recent)/5)]
-    radar = [{"l":l,"c":c,"p":clamp(c*0.9)} for l,c in zip(["Fuerza","Volumen","Running","Nutrición","Sueño","Energía"], cr)]
+    lastmax = lambda a: a[-1][1] if a else 0
+    kmrec = (kmW[nweeks-1] if nweeks else 0) + (kmW[nweeks-2] if nweeks > 1 else 0)
+    cr = [clamp(max(lastmax(pushMax), lastmax(pullMax), lastmax(legsMax))/160),
+          clamp((volW[nweeks-1] if nweeks else 0)/60000),
+          clamp(lastmax(pushMax)/160), clamp(lastmax(pullMax)/160), clamp(lastmax(legsMax)/160),
+          clamp(kmrec/16)]  # radar 100% atlético
+    radar = [{"l":l,"c":c,"p":clamp(c*0.9)} for l,c in zip(["Fuerza","Volumen","Push","Pull","Legs","Running"], cr)]
 
     # KPIs
     prot_avg = round(avg([r[2] for r in nutri])); kcal_avg = round(avg([r[1] for r in nutri]))
