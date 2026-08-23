@@ -155,7 +155,8 @@ def load():
            "prot": num(p["properties"],"Total Proteína (g)"), "carbs": num(p["properties"],"Total Carbs (g)"),
            "grasa": num(p["properties"],"Total Grasa (g)")} for p in query_db(DB["comidas"])]
     en = [{"f": dt(p["properties"],"Fecha"), "tipo": sel(p["properties"],"Tipo"),
-           "vol": num(p["properties"],"Volumen Total kg"), "emax": num(p["properties"],"Esfuerzo Máx (kg)")}
+           "vol": num(p["properties"],"Volumen Total kg"), "emax": num(p["properties"],"Esfuerzo Máx (kg)"),
+           "kcal": num(p["properties"],"Kcal Totales"), "fc": num(p["properties"],"FC Promedio (lpm)")}
           for p in query_db(DB["entreno"])]
     ru = [{"f": dt(p["properties"],"Fecha"), "km": num(p["properties"],"Distancia (km)"),
            "pace": num(p["properties"],"Ritmo (min/km)"), "fc": num(p["properties"],"FC Promedio (lpm)")}
@@ -260,11 +261,24 @@ def build(ci, co, en, ru):
     clamp = lambda x: round(max(0.1, min(1.0, x)), 2)
     lastmax = lambda a: a[-1][1] if a else 0
     kmrec = (kmW[nweeks-1] if nweeks else 0) + (kmW[nweeks-2] if nweeks > 1 else 0)
-    cr = [clamp(max(lastmax(pushMax), lastmax(pullMax), lastmax(legsMax))/160),
-          clamp((volW[nweeks-1] if nweeks else 0)/60000),
-          clamp(lastmax(pushMax)/160), clamp(lastmax(pullMax)/160), clamp(lastmax(legsMax)/160),
-          clamp(kmrec/16)]  # radar 100% atlético
-    radar = [{"l":l,"c":c,"p":clamp(c*0.9)} for l,c in zip(["Fuerza","Volumen","Push","Pull","Legs","Running"], cr)]
+    intens = [r for r in en if r["f"] and date.fromisoformat(r["f"]) >= today-timedelta(days=14)
+              and (r["tipo"] in ("Hybrid","Hyrox") or (r["tipo"]=="Otro" and (r.get("fc") or 0) >= 140))]
+    # balance por los 4 deportes reales: Gym · Running · Hybrid · Escalada
+    hyb = len([r for r in en if r["f"] and date.fromisoformat(r["f"]) >= today-timedelta(days=21) and r["tipo"] in ("Hybrid","Hyrox")])
+    esc = len([r for r in en if r["f"] and (r["tipo"] or "") in ("Escalada","Climbing","Boulder")])
+    cr = [clamp(max(lastmax(pushMax), lastmax(pullMax), lastmax(legsMax))/160),  # Gym (fuerza+volumen)
+          clamp(kmrec/16),                                                       # Running
+          clamp(hyb/3),                                                          # Hybrid
+          clamp(esc/5) if esc else 0.1]                                          # Escalada (sin registrar aún)
+    radar = [{"l":l,"c":c,"p":clamp(c*0.9)} for l,c in zip(["Gym","Running","Hybrid","Escalada"], cr)]
+    # kcal quemadas por entreno (sumadas por día, del reloj)
+    kbd = {}
+    for r in en:
+        if r["f"] and r.get("kcal") is not None:
+            e = kbd.setdefault(r["f"], {"kcal": 0, "tipo": r["tipo"], "top": 0})
+            e["kcal"] += r["kcal"]
+            if r["kcal"] > e["top"]: e["top"] = r["kcal"]; e["tipo"] = r["tipo"]
+    kcalEnt = sorted([[f, round(e["kcal"]), e["tipo"]] for f, e in kbd.items()])
 
     # KPIs
     prot_avg = round(avg([r[2] for r in nutri])); kcal_avg = round(avg([r[1] for r in nutri]))
@@ -303,7 +317,7 @@ def build(ci, co, en, ru):
         "kpis":kpis,"weight":weight,"pushMax":pushMax,"pullMax":pullMax,"legsMax":legsMax,
         "volWeek":volWeek,"nutri":nutri,"macros":macros,"sleep":sleep,"energia":energia,"weeks":weeks,
         "pillars":pillars,"pillarWeeks":[f"Sem {i+1}" for i in range(nweeks)],
-        "runs":runs,"weekday":weekday,"supp":supp,"suppRadar":suppRadar,"radar":radar,"hyps":HYPS,
+        "runs":runs,"weekday":weekday,"supp":supp,"suppRadar":suppRadar,"radar":radar,"kcalEnt":kcalEnt,"hyps":HYPS,
     }
 
 HYPS = [
