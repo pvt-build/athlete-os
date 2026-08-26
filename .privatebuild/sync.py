@@ -62,9 +62,84 @@ def dt(p, n):    x = (p.get(n) or {}).get("date"); return x["start"][:10] if x a
 def chk(p, n):   return bool((p.get(n) or {}).get("checkbox"))
 def sel(p, n):   x = (p.get(n) or {}).get("select"); return x["name"] if x else None
 def multi(p, n): return [o["name"] for o in ((p.get(n) or {}).get("multi_select") or [])]
+def txt(p, n):
+    x = (p.get(n) or {})
+    return "".join(o.get("plain_text","") for o in (x.get("title") or x.get("rich_text") or []))
 def now_cl():    return datetime.now(TZ)
 def di(iso):     return (date.fromisoformat(iso) - BASE_DATE).days
 def avg(xs):     xs = [x for x in xs if x is not None]; return sum(xs)/len(xs) if xs else 0
+
+# ─── Normalización ───────────────────────────────────────────────────────────
+# Las bases acumulan tres cosas que hay que limpiar antes de calcular:
+#   1. filas marcadas a mano para descartar,
+#   2. varias filas por día (el registro se cargó dos veces en agosto),
+#   3. dos formatos distintos de Comidas conviviendo (ver daily_meals).
+DROP_MARK = re.compile(r"^\s*\[(DUPLICADO|DESCARTADO|FUSIONADO)")
+
+def kcal_of(r):
+    """kcal de la fila; si no está cargada, se deriva de los macros (Atwater 4/4/9)."""
+    if r["kcal"] is not None: return r["kcal"]
+    if r["prot"] is None and r["carbs"] is None and r["grasa"] is None: return None
+    return 4*(r["prot"] or 0) + 4*(r["carbs"] or 0) + 9*(r["grasa"] or 0)
+
+def daily_meals(co):
+    """Un registro de nutrición por día.
+
+    Comidas tiene dos formatos encima: hasta el 28-jul una fila por día con los
+    totales (titulada con la fecha ISO), y desde el 29-jul una fila por comida.
+    Con totales se toma la fila de totales; con filas por comida se suman."""
+    by = {}
+    for r in co:
+        if not r["f"] or DROP_MARK.match(r.get("t") or ""): continue
+        by.setdefault(r["f"], []).append(r)
+    out = {}
+    for f, rows in by.items():
+        totales = [r for r in rows if (r.get("t") or "").strip() == f]
+        if totales:
+            r = max(totales, key=lambda r: r["kcal"] or 0)
+            k = kcal_of(r)
+            if k is None: continue
+            out[f] = {"kcal": k, "prot": r["prot"], "carbs": r["carbs"], "grasa": r["grasa"]}
+        else:
+            ks = [k for k in (kcal_of(r) for r in rows) if k is not None]
+            if not ks: continue
+            def suma(n):
+                vs = [r[n] for r in rows if r[n] is not None]
+                return sum(vs) if vs else None
+            out[f] = {"kcal": sum(ks), "prot": suma("prot"),
+                      "carbs": suma("carbs"), "grasa": suma("grasa")}
+    return out
+
+def dedup_checkin(ci):
+    """Un check-in por día. Los días cargados dos veces se fusionan campo a campo
+    (gana el primer valor no vacío) en vez de contarse dos veces en los promedios."""
+    out = {}
+    for r in ci:
+        if not r["f"]: continue
+        cur = out.setdefault(r["f"], {"f": r["f"], "peso": None, "sueno": None,
+                                      "energia": None, "entreno": False, "supp": []})
+        peso = r["peso"] if r["peso"] else None      # 0 kg = "no me pesé", no un peso
+        for k, v in (("peso", peso), ("sueno", r["sueno"]), ("energia", r["energia"])):
+            if cur[k] is None: cur[k] = v
+        cur["entreno"] = cur["entreno"] or r["entreno"]
+        for s in r.get("supp", []):
+            if s not in cur["supp"]: cur["supp"].append(s)
+    return sorted(out.values(), key=lambda r: r["f"])
+
+def dedup_entreno(en):
+    """Una sesión de fuerza por día y tipo.
+
+    Agosto quedó cargado dos veces y hay días con el mismo Push/Pull/Legs repetido
+    con volúmenes distintos (13-ago: 17.773 y 19.965). Son la misma sesión estimada
+    dos veces, así que se conserva la de mayor volumen. Hybrid/Otro no se colapsan:
+    ahí sí puede haber varias sesiones distintas el mismo día."""
+    mejor, out = {}, []
+    for r in en:
+        if r["tipo"] not in ("Push", "Pull", "Legs"):
+            out.append(r); continue
+        k = (r["f"], r["tipo"])
+        if k not in mejor or (r["vol"] or 0) > (mejor[k]["vol"] or 0): mejor[k] = r
+    return out + list(mejor.values())
 
 # ─── Carga ───────────────────────────────────────────────────────────────────
 def load():
@@ -72,7 +147,8 @@ def load():
            "sueno": num(p["properties"],"Horas de Sueno"), "energia": num(p["properties"],"Energia AM"),
            "entreno": chk(p["properties"],"Entreno Hecho"), "supp": multi(p["properties"],"Suplementos Tomados")}
           for p in query_db(DB["checkin"])]
-    co = [{"f": dt(p["properties"],"Fecha"), "kcal": num(p["properties"],"Total Calorías"),
+    co = [{"f": dt(p["properties"],"Fecha"), "t": txt(p["properties"],"Comida"),
+           "kcal": num(p["properties"],"Total Calorías"),
            "prot": num(p["properties"],"Total Proteína (g)"), "carbs": num(p["properties"],"Total Carbs (g)"),
            "grasa": num(p["properties"],"Total Grasa (g)")} for p in query_db(DB["comidas"])]
     en = [{"f": dt(p["properties"],"Fecha"), "tipo": sel(p["properties"],"Tipo"),
@@ -89,17 +165,14 @@ def build(ci, co, en, ru):
     span = di(today.isoformat()) + 1
     nweeks = (di(today.isoformat()) // 7) + 1
 
-    # peso
-    peso_by = {}
-    for r in ci:
-        if r["f"] and r["peso"] is not None and r["f"] not in peso_by: peso_by[r["f"]] = r["peso"]
-    weight = sorted([[f, v] for f, v in peso_by.items()])
+    ci = dedup_checkin(ci)
+    en = dedup_entreno(en)
 
-    # comidas dedup por fecha (mayor kcal)
-    best = {}
-    for r in co:
-        if not r["f"] or r["kcal"] is None: continue
-        if r["f"] not in best or r["kcal"] > best[r["f"]]["kcal"]: best[r["f"]] = r
+    # peso
+    weight = sorted([[r["f"], r["peso"]] for r in ci if r["peso"] is not None])
+
+    # nutrición: un registro por día (ver daily_meals)
+    best = daily_meals(co)
     nutri  = sorted([[f, round(r["kcal"]), round(r["prot"] or 0)] for f, r in best.items()])
     macros = sorted([[f, round(r["prot"]), round(r["carbs"]), round(r["grasa"])] for f, r in best.items()
                      if r["prot"] is not None and r["carbs"] is not None and r["grasa"] is not None])
