@@ -20,26 +20,21 @@
   body{background:var(--bg);color:var(--text-hi);font-family:var(--sans);font-size:15px;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
   .num{font-family:var(--num);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-
   .brand{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
   .brand-l{display:flex;align-items:center;gap:13px}
   .trident{font-size:32px;line-height:1;filter:drop-shadow(0 0 10px var(--gold-glow))}
   .brand h1{font-size:22px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
   .vtag{font-family:var(--num);font-size:10px;font-weight:700;background:var(--gold-glow);color:var(--gold);padding:2px 7px;border-radius:6px;border:1px solid var(--gold-dim)}
-  .byline{font-size:11px;color:var(--text-low);margin-top:4px}
-  .byline b{color:var(--gold-dim)}
+  .byline{font-size:11px;color:var(--text-low);margin-top:4px} .byline b{color:var(--gold-dim)}
   .brand-r{text-align:right}
   .brand-r .day{font-family:var(--num);font-size:38px;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em}
   .brand-r .day small{font-size:14px;color:var(--gold-dim);font-weight:500}
   .brand-r .rng{font-family:var(--num);font-size:11px;color:var(--text-low);margin-top:3px}
   .brand-r .src{font-size:10.5px;color:var(--teal);margin-top:5px;display:inline-flex;align-items:center;gap:5px}
   .brand-r .src::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal);animation:blink 2s ease-in-out infinite}
-
   .sec{display:flex;align-items:center;gap:11px;margin:24px 0 12px}
   .sec h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-mid)}
-  .sec .ln{flex:1;height:1px;background:var(--border)}
-  .sec .tg{font-size:10.5px;color:var(--text-low)}
-
+  .sec .ln{flex:1;height:1px;background:var(--border)} .sec .tg{font-size:10.5px;color:var(--text-low)}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
   .kpi{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--border);border-radius:13px;padding:14px 15px;transition:.15s;position:relative}
@@ -47,54 +42,38 @@
   .kpi .top{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:9px}
   .kpi .lbl{font-size:11.5px;color:var(--text-mid);display:flex;align-items:center;gap:7px}
   .pd{width:7px;height:7px;border-radius:50%;flex:none;animation:blink 1.8s ease-in-out infinite}
-  .pd.good{background:var(--good);box-shadow:0 0 7px var(--good)}
-  .pd.warn{background:var(--warn);box-shadow:0 0 7px var(--warn)}
-  .pd.danger{background:var(--danger);box-shadow:0 0 7px var(--danger)}
+  .pd.good{background:var(--good);box-shadow:0 0 7px var(--good)} .pd.warn{background:var(--warn);box-shadow:0 0 7px var(--warn)} .pd.danger{background:var(--danger);box-shadow:0 0 7px var(--danger)}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-  .badge{font-family:var(--num);font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:7px;white-space:nowrap}
-  .badge.up{background:rgba(74,222,128,.13);color:var(--good)}
-  .badge.down{background:rgba(229,72,77,.13);color:var(--danger)}
-  .badge.warnb{background:rgba(232,179,57,.14);color:var(--warn)}
-  .kpi .val{font-family:var(--num);font-size:27px;font-weight:700}
-  .kpi .val small{font-size:12px;color:var(--text-low);font-weight:500}
+  .badge{font-family:var(--num);font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:8px;white-space:nowrap}
+  .badge.up{background:rgba(74,222,128,.13);color:var(--good)} .badge.down{background:rgba(229,72,77,.13);color:var(--danger)} .badge.warnb{background:rgba(232,179,57,.14);color:var(--warn)}
+  .kpi .val{font-family:var(--num);font-size:27px;font-weight:700} .kpi .val small{font-size:12px;color:var(--text-low);font-weight:500}
   .kpi .meta{font-family:var(--num);font-size:10px;color:var(--text-low);margin-top:5px}
-
   .card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:15px 16px;transition:border-color .15s;min-width:0}
   .card:hover{border-color:var(--border-hi)}
   .card h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-mid);margin-bottom:3px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-  .card h3 .now{font-family:var(--num);font-size:12px;font-weight:700;color:var(--gold);text-transform:none;letter-spacing:0}
-  .card h3 .now.g{color:var(--good)}
-  .card .cap{font-size:11.5px;color:var(--text-mid);line-height:1.45;margin-top:8px}
-  .card .cap b{color:var(--text-hi)}
+  .card h3 .now{font-family:var(--num);font-size:12px;font-weight:700;color:var(--gold);text-transform:none;letter-spacing:0} .card h3 .now.g{color:var(--good)}
+  .card .cap{font-size:11.5px;color:var(--text-mid);line-height:1.45;margin-top:8px} .card .cap b{color:var(--text-hi)}
   .chart{width:100%;height:auto;display:block;overflow:visible;margin-top:4px}
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:10.5px;color:var(--text-mid);font-family:var(--num)}
-  .legend span{display:inline-flex;align-items:center;gap:5px}
-  .legend i{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .legend span{display:inline-flex;align-items:center;gap:5px} .legend i{width:9px;height:9px;border-radius:2px;display:inline-block}
   text{font-family:var(--num);font-variant-numeric:tabular-nums}
-  .axis{fill:var(--text-low);font-size:10.5px}
-  .gl{stroke:#1B1E24;stroke-width:1}
-
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .axis{fill:var(--text-low);font-size:10.5px} .gl{stroke:#1B1E24;stroke-width:1}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   @media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
   .full{grid-column:1/-1}
-  .radar-wrap{display:flex;justify-content:center;align-items:center}
-  #radar,#suppRadar{width:100%;height:auto;max-height:260px}
-
-  .hyp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
-  @media(max-width:900px){.hyp-grid{grid-template-columns:1fr}}
+  .radar-wrap{display:flex;justify-content:center;align-items:center} #radar{width:100%;height:auto;max-height:270px}
+  .hyp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px} @media(max-width:900px){.hyp-grid{grid-template-columns:1fr}}
   .hyp{background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:14px}
   .hyp .q{font-size:13px;font-weight:600;color:var(--text-hi);line-height:1.35;margin-bottom:8px}
   .hyp .st{display:inline-block;font-family:var(--num);font-size:9px;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:8px}
-  .st.strong{background:rgba(74,222,128,.12);color:var(--good)}
-  .st.watch{background:rgba(232,179,57,.13);color:var(--warn)}
-  .st.pending{background:var(--surface3);color:var(--text-low)}
-  .hyp .d{font-size:11.5px;line-height:1.5;color:var(--text-mid)}
-  .hyp .d b{color:var(--text-hi)}
-  .hyp .act{font-size:11.5px;line-height:1.4;color:var(--good);margin-top:7px;display:flex;gap:6px}
-  .hyp .act::before{content:"→";color:var(--good);flex:none}
-
+  .st.strong{background:rgba(74,222,128,.12);color:var(--good)} .st.watch{background:rgba(232,179,57,.13);color:var(--warn)} .st.pending{background:var(--surface3);color:var(--text-low)}
+  .hyp .d{font-size:11.5px;line-height:1.5;color:var(--text-mid)} .hyp .d b{color:var(--text-hi)}
+  .hyp .act{font-size:11.5px;line-height:1.4;color:var(--good);margin-top:7px;display:flex;gap:6px} .hyp .act::before{content:"→";color:var(--good);flex:none}
   .foot{text-align:center;font-family:var(--num);font-size:11px;color:var(--text-low);margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
+  .xrow{display:flex;align-items:center;gap:10px;padding:8px 4px;border-top:1px solid #1B1E24;font-size:12.5px} .xrow:first-child{border-top:none}
+  .xdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .xrow .xl{flex:1;color:var(--text-mid);line-height:1.3} .xrow .xl b{color:var(--text-hi)}
+  .xrow .xv{font-family:var(--num);font-weight:700;text-align:right}
   .fade{opacity:0;transform:translateY(9px);animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards}
   @keyframes rise{to{opacity:1;transform:none}}
   @media(prefers-reduced-motion:reduce){.fade,.pd,.src::before{animation:none;opacity:1;transform:none}}
@@ -103,101 +82,80 @@
 <body>
 <div class="wrap">
   <div class="brand fade">
-    <div class="brand-l">
-      <div class="trident">🔱</div>
-      <div><h1>ATHLETE OS <span class="vtag">LIVE</span></h1><div class="byline">by <b>PRIVATE BUILD</b> · atleta híbrido</div></div>
-    </div>
-    <div class="brand-r">
-      <div class="day num"><span id="hdr-day">—</span><small> días</small></div>
-      <div class="rng" id="hdr-range">—</div>
-      <div class="src">Notion · sync semanal</div>
-    </div>
+    <div class="brand-l"><div class="trident">🔱</div>
+      <div><h1>ATHLETE OS <span class="vtag">LIVE</span></h1><div class="byline">by <b>PRIVATE BUILD</b> · atleta híbrido</div></div></div>
+    <div class="brand-r"><div class="day num"><span id="hdr-day">—</span><small> días</small></div>
+      <div class="rng" id="hdr-range">—</div><div class="src">Notion · sync diario</div></div>
   </div>
 
-  <!-- GLOBALES -->
   <div class="kpis fade" id="kpis"></div>
 
-  <!-- ENERGÍA & SUEÑO -->
-  <div class="sec fade"><h2>Energía & sueño</h2><span class="ln"></span><span class="tg">cómo llegas a rendir</span></div>
-  <div class="grid2">
-    <div class="card fade"><h3>Energía AM · 1–5 <span class="now" id="n-ener"></span></h3><div id="c-energia" class="chart"></div>
-      <p class="cap"><b>Sueño fragmentado = energía baja</b> al otro día (confirmado). El bajón del 23 jul (energía 2) fue tras una noche de 5.1 h.</p></div>
-    <div class="card fade"><h3>Sueño · horas <span class="now" id="n-sleep"></span></h3><div id="c-sleep" class="chart"></div>
-      <p class="cap">Muy variable (4–9.5 h). No son las horas, es <b>que sea corrido</b>. Referencia 7 h.</p></div>
-  </div>
+  <div class="sec fade"><h2>Peso corporal</h2><span class="ln"></span><span class="tg">el norte: bajar a 95 kg</span></div>
+  <div class="card full fade"><h3>Peso · kg <span class="now g" id="n-weight"></span></h3><div id="c-weight" class="chart"></div>
+    <p class="cap">Línea = objetivo 95 kg. Pasá el mouse por un punto para el número. Tocaste piso 97.0 y rebotó a ~100 el 1/8 (finde de 4.300+ kcal); ahora oscilando ~98.</p></div>
 
-  <!-- PATRÓN SEMANAL -->
-  <div class="sec fade"><h2>¿Qué días te caes?</h2><span class="ln"></span><span class="tg">adherencia por día de la semana · todo el sistema</span></div>
-  <div class="card full fade">
-    <h3>Registro por día de la semana <span class="now">% de las veces</span></h3>
-    <div id="c-weekday" class="chart"></div>
+  <div class="sec fade"><h2>Sueño vs energía</h2><span class="ln"></span><span class="tg">un solo gráfico — el ratio</span></div>
+  <div class="card full fade"><h3>¿El sueño te da energía? <span class="now" id="n-slpen"></span></h3><div id="c-slpen" class="chart"></div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>Sueño (h)</span><span style="color:var(--gold)">━ Energía (1–5)</span><span style="color:var(--warn)">╌ meta 7 h</span></div>
+    <p class="cap">Barras = horas, línea = energía. Donde la línea cae bajo las barras, dormiste pero no rindió. El 23/7 (5.1 h) y el 15/8 (2 h) → energía al piso.</p></div>
+
+  <div class="sec fade"><h2>Adherencia por día de la semana</h2><span class="ln"></span><span class="tg">¿en qué día te caes?</span></div>
+  <div class="card full fade"><h3>De todos tus lunes, martes… ¿qué % cumpliste? <span class="now">registro histórico</span></h3><div id="c-weekday" class="chart"></div>
     <div class="legend"><span><i style="background:var(--gold)"></i>Comida registrada</span><span><i style="background:var(--blue)"></i>Entreno hecho</span></div>
-    <p class="cap"><b>El domingo es tu punto débil</b>: comida 67% y entreno 17%. El jueves también flojea en entreno (33%). Ahí es donde el sistema se rompe — no en la semana, en el fin de semana.</p>
-  </div>
+    <p class="cap">Lee así: de todos los <b>domingos</b> del sistema, registraste comida el 67% y entrenaste el 17%. El fin de semana es donde se rompe.</p></div>
 
-  <!-- 3 PILARES -->
-  <div class="sec fade"><h2>Tendencia semanal</h2><span class="ln"></span><span class="tg">¿cada pilar llegó a su meta esa semana?</span></div>
-  <div class="card full fade">
-    <h3>Entreno · nutrición · energía <span class="now g">100% = meta de la semana</span></h3>
-    <div id="c-pillars" class="chart"></div>
+  <div class="sec fade"><h2>¿Vas cumpliendo tus metas?</h2><span class="ln"></span><span class="tg">tendencia semanal · 100% = meta de esa semana</span></div>
+  <div class="card full fade"><h3>Entreno · nutrición · energía <span class="now g" id="n-pill"></span></h3><div id="c-pillars" class="chart"></div>
     <div class="legend"><span><i style="background:var(--blue)"></i>Entreno (volumen)</span><span><i style="background:var(--gold)"></i>Nutrición (proteína)</span><span><i style="background:var(--teal)"></i>Energía</span></div>
-    <p class="cap">Cada línea es qué tan cerca quedaste de la meta de ese pilar cada semana. <b>Arriba de 100% = superaste la meta.</b> Sube = mejor que la semana pasada. Las tres vienen subiendo, lideradas por el entreno.</p>
-  </div>
+    <p class="cap">Cada punto = qué % de la meta de ese pilar lograste esa semana. Sobre la línea (100%) = superaste. Sirve para ver <b>si cada semana vas mejor o peor</b>.</p></div>
 
-  <!-- BALANCE + APOYO · par a par para cruzar -->
-  <div class="sec fade"><h2>Balance & apoyo del stack</h2><span class="ln"></span><span class="tg">capacidad vs. hacia dónde apoya el suplemento</span></div>
-  <div class="grid2">
-    <div class="card fade"><h3>Balance atlético <span class="now">capacidad</span></h3>
-      <div class="radar-wrap"><svg id="radar" viewBox="0 0 280 230"></svg></div>
-      <p class="cap">Nivel por capacidad. Color = ahora · estela = semana pasada. Fuerza y volumen dominan; <b>Running flojo</b>.</p></div>
-    <div class="card fade"><h3>Apoyo del stack <span class="now">suplementos</span></h3>
-      <div class="radar-wrap"><svg id="suppRadar" viewBox="0 0 280 230"></svg></div>
-      <p class="cap">Hacia dónde apunta cada suplemento. <b>El cruce:</b> mirá dónde tu capacidad está baja y el stack NO la sostiene (Running y Comida no tienen apoyo constante).</p></div>
-  </div>
+  <div class="sec fade"><h2>Balance atlético</h2><span class="ln"></span><span class="tg">tus 4 deportes: gym · running · hybrid · escalada</span></div>
+  <div class="card full fade"><h3>Balance entre disciplinas <span class="now">ahora vs semana pasada</span></h3>
+    <div class="radar-wrap"><svg id="radar" viewBox="0 0 280 230"></svg></div>
+    <p class="cap">Tus 4 deportes. Hoy <b>Gym domina</b>; Running y Hybrid flojos; <b>Escalada sin registrar</b> — todavía no tiene tipo propio en Notion (si la etiquetás, entra sola).</p></div>
 
-  <!-- ALIMENTACIÓN -->
-  <div class="sec fade"><h2>Alimentación</h2><span class="ln"></span><span class="tg">meta: 180 g proteína · 2500–2600 kcal</span></div>
+  <div class="sec fade"><h2>Alimentación</h2><span class="ln"></span><span class="tg">meta: 180 g proteína · registrás por comida</span></div>
   <div class="grid3">
     <div class="card fade"><h3>Proteína por día <span class="now" id="n-prot"></span></h3><div id="c-prot" class="chart"></div>
       <div class="legend"><span><i style="background:var(--good)"></i>≥180</span><span><i style="background:var(--warn)"></i>160–180</span><span><i style="background:var(--danger)"></i>&lt;160</span></div>
-      <p class="cap">Meta <b>180 g</b>. Hoy promedias 160 → <b>20 g bajo</b>. El problema es consistencia, no promedio.</p></div>
+      <p class="cap">Sumo la proteína de <b>todas</b> tus comidas del día. Meta 180 g.</p></div>
     <div class="card fade"><h3>Calorías por día <span class="now g" id="n-kcal"></span></h3><div id="c-kcal" class="chart"></div>
-      <p class="cap">Meta <b>2500–2600</b>. Por debajo a propósito: el déficit baja el peso hacia 95 kg.</p></div>
+      <p class="cap">Días con kcal o derivadas de macros. Los picos del 1–2/8 (4.300+) explican el rebote de peso.</p></div>
     <div class="card fade"><h3>Macros · composición <span class="now" id="n-macros"></span></h3><div id="c-macros" class="chart"></div>
-      <div class="legend"><span><i style="background:var(--gold)"></i>Prot</span><span><i style="background:var(--blue)"></i>Carbos</span><span><i style="background:var(--purple)"></i>Grasa</span></div>
-      <p class="cap">La grasa se dispara en días sueltos, casi siempre fuentes ocultas.</p></div>
+      <div class="legend"><span><i style="background:var(--gold)"></i>Prot</span><span><i style="background:var(--blue)"></i>Carbos</span><span><i style="background:var(--purple)"></i>Grasa</span><span><i style="background:#3a3f48"></i>Resto</span></div>
+      <p class="cap"><b>Sin huecos.</b> Los días en gris tienen kcal+proteína pero no cargaste carbos/grasa por separado; el "resto" llena el día sin inventar el desglose.</p></div>
   </div>
 
-  <!-- SUPLEMENTOS · constancia -->
   <div class="sec fade"><h2>Suplementos</h2><span class="ln"></span><span class="tg">constancia de la toma</span></div>
-  <div class="card full fade"><h3>Constancia · días tomado <span class="now">últimas semanas</span></h3>
-    <div id="c-supp" class="chart"></div>
-    <p class="cap">Registrar la toma es lo que falta. <b>Melena de León: descontinuada.</b> QNT=comida, Creatina=fuerza, Omega=recuperación, Ereboost=foco, Energy=desempeño, Magnesio=descanso.</p>
-  </div>
+  <div class="card full fade"><h3>Días tomado <span class="now">color = para qué sirve</span></h3><div id="c-supp" class="chart"></div>
+    <div class="legend" id="supp-leg"></div>
+    <p class="cap">Omega y Ereboost casi diarios; el resto más irregular. <b>Cortisol (melena/ashwagandha) en 0</b> — no lo estás usando.</p></div>
 
-  <!-- RENDIMIENTO -->
-  <div class="sec fade"><h2>Rendimiento</h2><span class="ln"></span><span class="tg">fuerza · volumen · peso · running</span></div>
+  <div class="sec fade"><h2>Rendimiento</h2><span class="ln"></span><span class="tg">fuerza · volumen · kcal quemadas · running</span></div>
   <div class="grid2">
     <div class="card fade"><h3>Fuerza · esfuerzo máx <span class="now" id="n-str"></span></h3><div id="c-strength" class="chart"></div>
       <div class="legend"><span><i style="background:var(--gold)"></i>Legs</span><span><i style="background:var(--teal)"></i>Pull</span><span><i style="background:var(--blue)"></i>Push</span></div>
-      <p class="cap">Jalón Pull = PR absoluto. Legs entró con volumen. Todo crece.</p></div>
+      <p class="cap">PRs por tipo. Todo crece.</p></div>
     <div class="card fade"><h3>Volumen semanal · kg <span class="now" id="n-vol"></span></h3><div id="c-vol" class="chart"></div>
-      <p class="cap"><b>Vista semanal.</b> Meta ~40k (4 sesiones × 10k).</p></div>
-    <div class="card fade"><h3>Peso corporal <span class="now g" id="n-weight"></span></h3><div id="c-weight" class="chart"></div>
-      <p class="cap">En verde: bajar es el objetivo. Línea = objetivo 95 kg.</p></div>
+      <p class="cap"><b>Semanal</b> (del resumen de cada entreno). Meta ~40k.</p></div>
+    <div class="card fade"><h3>Kcal quemadas · por tipo <span class="now g" id="n-kent"></span></h3><div id="c-kcalent" class="chart"></div>
+      <div class="legend" id="kent-leg"></div>
+      <p class="cap">Del reloj, coloreado por tipo. <b>Hybrid/Hyrox son los que más queman</b> (900–1.500). Tu cardio de agosto vive acá como Hybrid/Otro.</p></div>
     <div class="card fade"><h3>Running · km + pace + ppm <span class="now g" id="n-run"></span></h3><div id="c-run" class="chart"></div>
       <div class="legend"><span style="color:var(--teal)"><i style="background:var(--teal)"></i> km</span><span style="color:var(--gold)">━ pace</span><span style="color:var(--danger)">┅ ppm</span></div>
-      <p class="cap">Meta <b>2 salidas/semana</b>. Km en barras, pace y pulso en líneas.</p></div>
+      <p class="cap">Solo la base Running (4 corridas con GPS). El cardio de cinta/Hyrox está en la tarjeta de la izquierda. Meta 2/sem.</p></div>
   </div>
 
-  <!-- HIPÓTESIS -->
+  <div class="sec fade"><h2>Prioridad de ajuste</h2><span class="ln"></span><span class="tg">dónde ajustar primero · macros y suplementación</span></div>
+  <div class="card full fade"><h3>Ordenado por urgencia <span class="now">según tus ratios</span></h3><div id="x-prio"></div>
+    <p class="cap">Rojo = atacar ya. Cada fila cruza tu dato real con la meta y te da el ajuste concreto.</p></div>
+
   <div class="sec fade"><h2>Hipótesis & correlaciones</h2><span class="ln"></span><span class="tg">cruces que PERMITEN mejora</span></div>
   <div class="hyp-grid fade" id="hyp"></div>
 
-  <div class="foot fade">ATHLETE OS · by Private Build · datos vivos en Notion · sync semanal (sábados AM) · <span id="foot-sync"></span></div>
+  <div class="foot fade">ATHLETE OS · by Private Build · datos vivos en Notion · <span id="foot-sync"></span></div>
 </div>
 
-<!-- ══════════ ATHLETE-OS DATA · lo regenera .privatebuild/sync.py ══════════ -->
 <script id="athlete-data" type="application/json">
 {"meta": {"base": "2026-06-19", "day": 69, "span": 69, "range": "19 jun → 26 ago 2026", "lastSync": "2026-08-26 09:00"}, "kpis": [{"lbl": "Peso corporal", "pd": "good", "badge": "▼ 1.6", "bcls": "up", "val": "98.1", "unit": " kg", "meta": "objetivo 95 · faltan 3.1"}, {"lbl": "Proteína prom", "pd": "good", "badge": "✓", "bcls": "up", "val": "186", "unit": " g", "meta": "meta 180 · 6"}, {"lbl": "Calorías prom", "pd": "good", "badge": "ok", "bcls": "warnb", "val": "2502", "unit": "", "meta": "meta ≤2.800 (tope)"}, {"lbl": "Volumen semanal", "pd": "good", "badge": "▼ 94%", "bcls": "down", "val": "2.4", "unit": "k kg", "meta": "meta ~40k"}, {"lbl": "Running semanal", "pd": "warn", "badge": "▼ falta 2", "bcls": "warnb", "val": "0", "unit": " /2", "meta": "sesiones · meta 2/sem"}, {"lbl": "Sueño prom", "pd": "warn", "badge": "▼ 0.8h", "bcls": "warnb", "val": "7.2", "unit": " h", "meta": "target 8h corrido"}, {"lbl": "Energía AM prom", "pd": "good", "badge": "✓", "bcls": "up", "val": "4.2", "unit": " /5", "meta": "target ≥4/5"}, {"lbl": "Registro diario", "pd": "good", "badge": "▲", "bcls": "up", "val": "94", "unit": " %", "meta": "65/69 días"}], "weight": [["2026-06-20", 99.7], ["2026-06-23", 99.8], ["2026-06-24", 97.5], ["2026-06-25", 97.5], ["2026-06-26", 98], ["2026-07-01", 99.5], ["2026-07-03", 98.7], ["2026-07-04", 98.7], ["2026-07-05", 98.1], ["2026-07-06", 98.5], ["2026-07-07", 99.2], ["2026-07-08", 98], ["2026-07-09", 97.1], ["2026-07-11", 97.4], ["2026-07-12", 98.1], ["2026-07-13", 98.3], ["2026-07-14", 97.9], ["2026-07-15", 97.4], ["2026-07-16", 97.7], ["2026-07-17", 98], ["2026-07-18", 98.5], ["2026-07-19", 98.5], ["2026-07-20", 98.6], ["2026-07-21", 98.3], ["2026-07-22", 98.3], ["2026-07-23", 98.3], ["2026-07-24", 98.7], ["2026-07-25", 98.5], ["2026-07-26", 98.3], ["2026-07-27", 98.6], ["2026-07-28", 98], ["2026-07-29", 97], ["2026-07-30", 97.2], ["2026-07-31", 98.1], ["2026-08-01", 100.1], ["2026-08-02", 99.4], ["2026-08-03", 99.1], ["2026-08-04", 99.4], ["2026-08-05", 99.6], ["2026-08-06", 99.1], ["2026-08-08", 98.8], ["2026-08-09", 98.7], ["2026-08-10", 100], ["2026-08-11", 99.1], ["2026-08-12", 98.7], ["2026-08-13", 98.2], ["2026-08-14", 97.9], ["2026-08-15", 97.9], ["2026-08-16", 97.9], ["2026-08-17", 97.9], ["2026-08-18", 98.7], ["2026-08-19", 98.7], ["2026-08-20", 98.7], ["2026-08-25", 98.1]], "pushMax": [["2026-06-23", 117], ["2026-07-01", 117], ["2026-07-08", 117], ["2026-07-12", 117], ["2026-07-16", 117], ["2026-07-20", 124], ["2026-07-23", 124], ["2026-07-27", 131], ["2026-07-30", 131], ["2026-08-06", 138], ["2026-08-11", 138], ["2026-08-14", 138], ["2026-08-19", 138]], "pullMax": [["2026-07-07", 117], ["2026-07-13", 124], ["2026-07-17", 124], ["2026-07-21", 124], ["2026-07-24", 131], ["2026-07-28", 138], ["2026-08-05", 138], ["2026-08-10", 138], ["2026-08-13", 138], ["2026-08-17", 138]], "legsMax": [["2026-07-18", 124], ["2026-07-29", 155], ["2026-08-03", 131]], "volWeek": [22.8, 8.2, 20.0, 18.6, 37.4, 63.2, 39.2, 34.8, 43.5, 2.4], "nutri": [["2026-06-19", 2370, 105], ["2026-06-20", 1900, 173], ["2026-06-22", 2398, 271], ["2026-06-23", 1715, 153], ["2026-06-24", 1695, 74], ["2026-06-25", 2040, 149], ["2026-06-26", 1136, 100], ["2026-06-27", 3000, 120], ["2026-06-28", 2996, 126], ["2026-06-29", 3000, 120], ["2026-06-30", 3000, 100], ["2026-07-01", 2810, 166], ["2026-07-02", 1874, 166], ["2026-07-03", 1500, 100], ["2026-07-04", 1816, 165], ["2026-07-05", 1537, 150], ["2026-07-06", 2516, 160], ["2026-07-07", 2096, 217], ["2026-07-08", 2019, 163], ["2026-07-09", 2243, 208], ["2026-07-10", 1310, 97], ["2026-07-11", 3716, 157], ["2026-07-12", 2460, 146], ["2026-07-13", 2848, 240], ["2026-07-15", 2583, 216], ["2026-07-16", 2129, 167], ["2026-07-18", 2246, 125], ["2026-07-21", 1853, 106], ["2026-07-22", 1980, 175], ["2026-07-23", 2640, 205], ["2026-07-24", 2939, 263], ["2026-07-25", 2396, 125], ["2026-07-26", 2305, 187], ["2026-07-27", 1936, 197], ["2026-07-28", 2164, 217], ["2026-07-29", 2575, 212], ["2026-07-30", 2598, 157], ["2026-07-31", 2246, 200], ["2026-08-01", 4302, 242], ["2026-08-02", 4585, 167], ["2026-08-03", 1594, 170], ["2026-08-04", 1554, 77], ["2026-08-05", 1886, 184], ["2026-08-06", 1982, 212], ["2026-08-08", 2642, 158], ["2026-08-09", 1880, 167], ["2026-08-10", 4209, 416], ["2026-08-11", 4277, 375], ["2026-08-12", 3954, 338], ["2026-08-13", 4433, 498], ["2026-08-14", 4203, 391], ["2026-08-15", 2154, 152], ["2026-08-16", 2582, 148], ["2026-08-25", 2283, 169]], "macros": [["2026-06-19", 105, 220, 95], ["2026-06-20", 173, 148, 59], ["2026-06-22", 271, 150, 74], ["2026-06-23", 153, 120, 67], ["2026-06-24", 74, 154, 87], ["2026-06-25", 149, 192, 73], ["2026-06-26", 100, 89, 32], ["2026-06-28", 126, 231, 153], ["2026-07-01", 166, 218, 103], ["2026-07-04", 165, 118, 57], ["2026-07-06", 160, 168, 97], ["2026-07-07", 217, 137, 73], ["2026-07-08", 163, 152, 65], ["2026-07-09", 208, 165, 63], ["2026-07-10", 97, 109, 43], ["2026-07-11", 157, 275, 172], ["2026-07-12", 146, 177, 100], ["2026-07-15", 216, 170, 93], ["2026-07-21", 106, 149, 81], ["2026-07-27", 197, 84, 65], ["2026-07-28", 217, 144, 53], ["2026-07-29", 212, 281, 67], ["2026-07-30", 157, 258, 104], ["2026-07-31", 200, 183, 79], ["2026-08-01", 242, 349, 203], ["2026-08-02", 167, 385, 196], ["2026-08-03", 170, 98, 58], ["2026-08-04", 77, 154, 70], ["2026-08-05", 184, 130, 70], ["2026-08-06", 212, 181, 45], ["2026-08-08", 158, 332, 76], ["2026-08-09", 167, 104, 89], ["2026-08-10", 416, 306, 146], ["2026-08-11", 375, 393, 134], ["2026-08-12", 338, 370, 125], ["2026-08-13", 498, 326, 126], ["2026-08-14", 391, 308, 156], ["2026-08-15", 152, 152, 104], ["2026-08-16", 148, 98, 177], ["2026-08-25", 169, 157, 99]], "sleep": [["2026-06-19", 4], ["2026-06-20", 4], ["2026-06-21", 4], ["2026-06-23", 7.5], ["2026-06-24", 8], ["2026-06-25", 8], ["2026-06-28", 8.5], ["2026-06-29", 9], ["2026-06-30", 9], ["2026-07-01", 7], ["2026-07-02", 7], ["2026-07-03", 4], ["2026-07-04", 7.5], ["2026-07-05", 7], ["2026-07-06", 9.5], ["2026-07-07", 6.5], ["2026-07-08", 7.5], ["2026-07-09", 7], ["2026-07-11", 8], ["2026-07-12", 8], ["2026-07-13", 6.5], ["2026-07-14", 7], ["2026-07-15", 7], ["2026-07-16", 6.5], ["2026-07-17", 8.5], ["2026-07-18", 6], ["2026-07-19", 9], ["2026-07-20", 6.75], ["2026-07-21", 9], ["2026-07-22", 7.3], ["2026-07-23", 5.1], ["2026-07-24", 6.3], ["2026-07-25", 9.3], ["2026-07-26", 8.5], ["2026-07-27", 8.3], ["2026-07-28", 5.7], ["2026-07-29", 8.5], ["2026-07-30", 7.5], ["2026-07-31", 6], ["2026-08-01", 6], ["2026-08-02", 8], ["2026-08-03", 7.2], ["2026-08-04", 7], ["2026-08-05", 7], ["2026-08-06", 8.5], ["2026-08-08", 8], ["2026-08-09", 9], ["2026-08-10", 6.5], ["2026-08-11", 8], ["2026-08-12", 6], ["2026-08-13", 6], ["2026-08-14", 9], ["2026-08-15", 2], ["2026-08-16", 7], ["2026-08-17", 8], ["2026-08-18", 7], ["2026-08-19", 7], ["2026-08-20", 6.5], ["2026-08-21", 6], ["2026-08-22", 8], ["2026-08-23", 8], ["2026-08-25", 9]], "energia": [["2026-06-19", 3], ["2026-06-20", 4], ["2026-06-23", 3], ["2026-06-24", 4], ["2026-06-25", 4], ["2026-06-26", 3], ["2026-06-27", 3], ["2026-06-28", 5], ["2026-06-29", 4], ["2026-06-30", 4], ["2026-07-01", 5], ["2026-07-02", 4], ["2026-07-03", 4], ["2026-07-04", 4], ["2026-07-05", 4], ["2026-07-07", 3], ["2026-07-08", 5], ["2026-07-09", 4], ["2026-07-11", 3], ["2026-07-12", 5], ["2026-07-13", 4], ["2026-07-14", 4], ["2026-07-15", 3], ["2026-07-16", 4], ["2026-07-17", 4], ["2026-07-18", 5], ["2026-07-19", 5], ["2026-07-20", 4], ["2026-07-21", 5], ["2026-07-22", 5], ["2026-07-23", 2], ["2026-07-24", 4], ["2026-07-25", 4], ["2026-07-26", 5], ["2026-07-27", 4], ["2026-07-28", 4], ["2026-07-29", 3], ["2026-07-30", 4], ["2026-07-31", 4], ["2026-08-01", 3], ["2026-08-02", 4], ["2026-08-03", 5], ["2026-08-04", 4], ["2026-08-05", 4], ["2026-08-06", 5], ["2026-08-08", 5], ["2026-08-09", 5], ["2026-08-10", 4], ["2026-08-11", 4], ["2026-08-12", 5], ["2026-08-13", 4], ["2026-08-14", 5], ["2026-08-16", 4], ["2026-08-17", 5], ["2026-08-18", 5], ["2026-08-19", 5], ["2026-08-20", 4], ["2026-08-21", 5], ["2026-08-22", 5], ["2026-08-23", 5], ["2026-08-25", 4]], "weeks": [{"w": "S1", "p": 2, "u": 2, "l": 0}, {"w": "S2", "p": 1, "u": 0, "l": 0}, {"w": "S3", "p": 1, "u": 1, "l": 0}, {"w": "S4", "p": 2, "u": 1, "l": 0}, {"w": "S5", "p": 2, "u": 2, "l": 1}, {"w": "S6", "p": 2, "u": 2, "l": 1}, {"w": "S7", "p": 1, "u": 1, "l": 1}, {"w": "S8", "p": 1, "u": 2, "l": 0}, {"w": "S9", "p": 2, "u": 1, "l": 0}, {"w": "S10", "p": 0, "u": 0, "l": 0}], "pillars": [[57, 21, 50, 46, 93, 150, 98, 87, 109, 6], [86, 71, 92, 95, 85, 108, 99, 150, 128, 94], [72, 80, 80, 77, 86, 80, 83, 90, 93, 95]], "pillarWeeks": ["Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7", "Sem 8", "Sem 9", "Sem 10"], "runs": [{"d": "18/06", "k": 4.14, "pc": 7.04, "f": 145}, {"d": "21/06", "k": 3.68, "pc": 6.78, "f": 143}, {"d": "29/07", "k": 4.16, "pc": 6.05, "f": 158}, {"d": "03/08", "k": 4.16, "pc": 7.23, "f": 133}], "weekday": {"dias": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"], "comida": [70, 80, 80, 89, 70, 90, 70], "entreno": [60, 50, 60, 56, 40, 20, 10]}, "supp": [{"name": "Omega 3", "cat": "Recuperación", "days": 43}, {"name": "Ereboost", "cat": "Testosterona", "days": 36}, {"name": "Energy + Elec.", "cat": "Fatiga", "days": 29}, {"name": "Creatina", "cat": "Fuerza", "days": 24}, {"name": "Multivitaminico", "cat": "Recuperación", "days": 20}, {"name": "QNT Isolate", "cat": "Proteína", "days": 11}, {"name": "Magnesio", "cat": "Sueño", "days": 8}, {"name": "Melena", "cat": "Foco", "days": 1}, {"name": "Ashwagandha", "cat": "Cortisol", "days": 0}, {"name": "Adaptógenos", "cat": "Cortisol", "days": 0}, {"name": "Eunoé", "cat": "Sueño", "days": 0}], "suppRadar": [{"l": "Fuerza", "v": 1.0}, {"l": "Recuperación", "v": 1.0}, {"l": "Testosterona", "v": 1.0}, {"l": "Fatiga", "v": 1.0}, {"l": "Sueño", "v": 0.0}, {"l": "Proteína", "v": 1.0}, {"l": "Foco", "v": 0.17}, {"l": "Cortisol", "v": 0.0}], "radar": [{"l": "Fuerza", "c": 0.86, "p": 0.77}, {"l": "Volumen", "c": 0.1, "p": 0.1}, {"l": "Running", "c": 0.1, "p": 0.1}, {"l": "Nutrición", "c": 1.0, "p": 0.9}, {"l": "Sueño", "c": 0.86, "p": 0.77}, {"l": "Energía", "c": 0.93, "p": 0.84}], "hyps": [{"s": "watch", "st": "OBSERVANDO · 2 datos", "q": "¿Más proteína el día previo = más volumen al día siguiente?", "d": "+42 g el día antes se tradujo en <b>+1.715 kg de volumen</b> (8 jul, PR).", "a": "Cargar proteína el día ANTES de Push/Pull pesado."}, {"s": "strong", "st": "CONFIRMADO · 8+ datos", "q": "¿Sueño fragmentado = energía baja al día siguiente?", "d": "Sin excepción: noche partida → energía ≤3.", "a": "Priorizar sueño CORRIDO sobre horas totales."}, {"s": "strong", "st": "CONFIRMADO · datos propios", "q": "¿El domingo es el día que rompe el sistema?", "d": "Comida al <b>67%</b> y entreno al <b>17%</b> los domingos.", "a": "Ritual de domingo: registrar comida + active rest fijo."}, {"s": "watch", "st": "OBSERVANDO", "q": "¿Peso estancado con fuerza subiendo = músculo?", "d": "Peso plano con PRs subiendo huele a <b>recomposición</b>, sin confirmar.", "a": "Medir cuello/cintura/cadera (Navy) 1 vez al mes."}, {"s": "watch", "st": "OBSERVANDO", "q": "¿Los días <160 g son los sin proteína animal al mediodía?", "d": "Desayuno sólido y almuerzo con proteína animal <b>anclan</b> el día.", "a": "Proteína animal visible al almuerzo = piso 180 g."}, {"s": "pending", "st": "SIN DATOS SUFICIENTES", "q": "¿El déficit sostenido frena energía/recuperación?", "d": "Si la energía no sube con buen sueño, el techo puede ser el déficit.", "a": "Registrar energía PM para cruzarla vs calorías."}]}
 </script>
@@ -206,138 +164,135 @@
 (function(){
   var D=JSON.parse(document.getElementById('athlete-data').textContent);
   var C={sf:'#14161B',gold:'#D8A847',hi:'#F2EFE6',mid:'#A9ADB4',low:'#5F636B',good:'#4ADE80',danger:'#E5484D',warn:'#E8B339',blue:'#5B9BD5',teal:'#4EC3A8',purple:'#9B8AE6'};
-  var CATC={"Fuerza":C.gold,"Recuperación":C.teal,"Testosterona":C.danger,"Fatiga":C.warn,"Sueño":C.blue,"Proteína":C.good,"Foco":C.purple,"Cortisol":"#9aa7b4","Desempeño":C.danger,"Descanso":C.blue,"Comida":C.good};
+  var CATC={"Fuerza":C.gold,"Recuperación":C.teal,"Testosterona":C.danger,"Fatiga":C.warn,"Sueño":C.blue,"Proteína":C.good,"Foco":C.purple,"Cortisol":"#9aa7b4"};
   var base=new Date(D.meta.base+'T00:00:00');
   function di(iso){return Math.round((new Date(iso+'T00:00:00')-base)/864e5);}
   var W=720,H=240,PL=46,PR=52,PT=16,PB=26,XMAX=D.meta.span||42;
-  function xmap(x,xm){return PL+(x/xm)*(W-PL-PR);}
+  function xmap(x){return PL+(x/XMAX)*(W-PL-PR);}
   function ymap(y,y0,y1){return PT+(1-(y-y0)/(y1-y0))*(H-PT-PB);}
-  function grid(y0,y1,st,fmt){var s='',i,v,yy;for(i=0;i<=st;i++){v=y0+(y1-y0)*i/st;yy=ymap(v,y0,y1);
-    s+='<line class="gl" x1="'+PL+'" y1="'+yy.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+yy.toFixed(1)+'"/><text class="axis" x="'+(PL-8)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end">'+fmt(v)+'</text>';}return s;}
-  function xlab(a,b){return '<text class="axis" x="'+PL+'" y="'+(H-6)+'" text-anchor="start">'+a+'</text><text class="axis" x="'+(W-PR)+'" y="'+(H-6)+'" text-anchor="end">'+b+'</text>';}
+  function grid(y0,y1,st,fmt){var s='',i,v,yy;for(i=0;i<=st;i++){v=y0+(y1-y0)*i/st;yy=ymap(v,y0,y1);s+='<line class="gl" x1="'+PL+'" y1="'+yy.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+yy.toFixed(1)+'"/><text class="axis" x="'+(PL-8)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end">'+fmt(v)+'</text>';}return s;}
   function refl(v,y0,y1,c,l){var y=ymap(v,y0,y1);return '<line x1="'+PL+'" y1="'+y.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+y.toFixed(1)+'" stroke="'+c+'" stroke-width="1" stroke-dasharray="5 4" opacity="0.75"/><text class="axis" x="'+(W-PR)+'" y="'+(y-5).toFixed(1)+'" text-anchor="end" fill="'+c+'">'+l+'</text>';}
   function svg(h,inner){return '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" width="100%" height="'+h+'">'+inner+'</svg>';}
-  function P(arr){return arr.map(function(r){return [di(r[0]),r[1]];});}
-
-  function lines(el,series,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt)+xlab(o.a,o.b);if(o.ref!=null)inner+=refl(o.ref,o.y0,o.y1,o.rc,o.rl);
-    series.forEach(function(se){var d='',i,X,Y;for(i=0;i<se.pts.length;i++){X=xmap(se.pts[i][0],o.xm);Y=ymap(se.pts[i][1],o.y0,o.y1);d+=(i?' L':'M')+X.toFixed(1)+' '+Y.toFixed(1);}
-      if(se.area){var id='g'+Math.floor(Math.random()*1e5);var a='M'+xmap(se.pts[0][0],o.xm).toFixed(1)+' '+(H-PB)+' '+se.pts.map(function(p){return 'L'+xmap(p[0],o.xm).toFixed(1)+' '+ymap(p[1],o.y0,o.y1).toFixed(1);}).join(' ')+' L'+xmap(se.pts[se.pts.length-1][0],o.xm).toFixed(1)+' '+(H-PB)+' Z';
+  function P(a){return a.map(function(r){return [di(r[0]),r[1]];});}
+  function fmtD(dx){var d=new Date(base.getTime()+dx*864e5);return d.getDate()+'/'+(d.getMonth()+1);}
+  function xdates(){var s='',x;for(x=0;x<=XMAX;x+=7){var xx=xmap(x);s+='<line class="gl" x1="'+xx.toFixed(1)+'" y1="'+(H-PB)+'" x2="'+xx.toFixed(1)+'" y2="'+(H-PB+3)+'"/><text class="axis" x="'+xx.toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+fmtD(x)+'</text>';}return s;}
+  function tt(dx,v,u){return '<title>'+fmtD(dx)+': '+v+(u||'')+'</title>';}
+  function lines(el,series,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt)+xdates();if(o.ref!=null)inner+=refl(o.ref,o.y0,o.y1,o.rc,o.rl);
+    series.forEach(function(se){var d='',i;for(i=0;i<se.pts.length;i++){d+=(i?' L':'M')+xmap(se.pts[i][0]).toFixed(1)+' '+ymap(se.pts[i][1],o.y0,o.y1).toFixed(1);}
+      if(se.area){var id='g'+Math.floor(Math.random()*1e5);var a='M'+xmap(se.pts[0][0]).toFixed(1)+' '+(H-PB)+' '+se.pts.map(function(p){return 'L'+xmap(p[0]).toFixed(1)+' '+ymap(p[1],o.y0,o.y1).toFixed(1);}).join(' ')+' L'+xmap(se.pts[se.pts.length-1][0]).toFixed(1)+' '+(H-PB)+' Z';
         inner+='<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+se.color+'" stop-opacity="0.3"/><stop offset="1" stop-color="'+se.color+'" stop-opacity="0"/></linearGradient></defs><path d="'+a+'" fill="url(#'+id+')"/>';}
       inner+='<path d="'+d+'" fill="none" stroke="'+se.color+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>';
-      if(se.dots)for(i=0;i<se.pts.length-1;i++)inner+='<circle cx="'+xmap(se.pts[i][0],o.xm).toFixed(1)+'" cy="'+ymap(se.pts[i][1],o.y0,o.y1).toFixed(1)+'" r="3" fill="'+se.color+'"/>';
-      var lp=se.pts[se.pts.length-1],ex=xmap(lp[0],o.xm),ey=ymap(lp[1],o.y0,o.y1);
-      inner+='<circle cx="'+ex.toFixed(1)+'" cy="'+ey.toFixed(1)+'" r="4" fill="'+se.color+'" stroke="'+C.sf+'" stroke-width="2"/>';
-      if(se.lab!==false)inner+='<text x="'+(ex+7)+'" y="'+(ey+4).toFixed(1)+'" fill="'+se.color+'" font-size="12" font-weight="700">'+(se.f?se.f(lp[1]):lp[1])+'</text>';});
+      se.pts.forEach(function(p){inner+='<circle cx="'+xmap(p[0]).toFixed(1)+'" cy="'+ymap(p[1],o.y0,o.y1).toFixed(1)+'" r="3" fill="'+se.color+'">'+tt(p[0],(se.f?se.f(p[1]):p[1]),o.u)+'</circle>';});
+      var lp=se.pts[se.pts.length-1];if(se.lab!==false)inner+='<text x="'+(xmap(lp[0])+7).toFixed(1)+'" y="'+(ymap(lp[1],o.y0,o.y1)+4).toFixed(1)+'" fill="'+se.color+'" font-size="12" font-weight="700">'+(se.f?se.f(lp[1]):lp[1])+'</text>';});
     document.getElementById(el).innerHTML=svg(o.h||205,inner);}
-  function bars(el,data,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt);if(o.ref!=null)inner+=refl(o.ref,o.y0,o.y1,o.rc,o.rl);var bw=(W-PL-PR)/o.xm*0.66;
-    data.forEach(function(r){var x=xmap(r[0],o.xm)-bw/2,y=ymap(Math.min(r[1],o.y1),o.y0,o.y1);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="1.5" fill="'+o.cf(r[1])+'" opacity="0.92"/>';});
-    inner+=xlab(o.a,o.b);document.getElementById(el).innerHTML=svg(o.h||205,inner);}
-  function stacked(el,data,segs,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt);var bw=(W-PL-PR)/o.xm*0.66;
-    data.forEach(function(r){var x=xmap(r[0],o.xm)-bw/2,b2=H-PB;segs.forEach(function(s){var v=r[s.i];if(!v)return;var hp=(v/(o.y1-o.y0))*(H-PT-PB),y=b2-hp;inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+hp.toFixed(1)+'" fill="'+s.c+'" opacity="0.92"/>';b2=y;});});
-    inner+=xlab(o.a,o.b);document.getElementById(el).innerHTML=svg(o.h||205,inner);}
-
-  function radar(el,axes,opts){var s=document.getElementById(el),cx=140,cy=112,R=74,n=axes.length,rings='';
+  function bars(el,data,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt);if(o.ref!=null)inner+=refl(o.ref,o.y0,o.y1,o.rc,o.rl);var bw=(W-PL-PR)/XMAX*0.66;
+    data.forEach(function(r){var x=xmap(r[0])-bw/2,y=ymap(Math.min(r[1],o.y1),o.y0,o.y1);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="1.5" fill="'+o.cf(r[1])+'" opacity="0.92">'+tt(r[0],r[1],o.u)+'</rect>';});
+    inner+=xdates();document.getElementById(el).innerHTML=svg(o.h||205,inner);}
+  function stacked(el,data,segs,o){var inner=grid(o.y0,o.y1,o.st||4,o.fmt);var bw=(W-PL-PR)/XMAX*0.66;
+    data.forEach(function(r){var x=xmap(r[0])-bw/2,b2=H-PB;segs.forEach(function(s){var v=r[s.i];if(!v)return;var hp=(v/(o.y1-o.y0))*(H-PT-PB),y=b2-hp;inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+hp.toFixed(1)+'" fill="'+s.c+'" opacity="0.92"><title>'+fmtD(r[0])+' · '+s.n+': '+v+' g</title></rect>';});});
+    inner+=xdates();document.getElementById(el).innerHTML=svg(o.h||205,inner);}
+  function radar(el,axes){var s=document.getElementById(el),cx=140,cy=112,R=74,n=axes.length,rings='';
     for(var r=1;r<=3;r++){var pts='';for(var i=0;i<n;i++){var a=(Math.PI*2*i/n)-Math.PI/2,rr=R*r/3;pts+=(cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1)+' ';}rings+='<polygon points="'+pts+'" fill="none" stroke="#252932" stroke-width="1"/>';}
-    var spokes='',labels='',dp='',gp='';
-    for(var i=0;i<n;i++){var a=(Math.PI*2*i/n)-Math.PI/2,ex=cx+R*Math.cos(a),ey=cy+R*Math.sin(a);
+    var spokes='',labels='',dp='',gp='';for(var i=0;i<n;i++){var a=(Math.PI*2*i/n)-Math.PI/2,ex=cx+R*Math.cos(a),ey=cy+R*Math.sin(a);
       spokes+='<line x1="'+cx+'" y1="'+cy+'" x2="'+ex.toFixed(1)+'" y2="'+ey.toFixed(1)+'" stroke="#252932" stroke-width="1"/>';
-      var lx=cx+(R+20)*Math.cos(a),ly=cy+(R+20)*Math.sin(a);
-      labels+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" fill="'+C.mid+'" font-size="9.5" text-anchor="middle" dominant-baseline="middle">'+axes[i].l+'</text>';
-      dp+=(cx+R*axes[i].c*Math.cos(a)).toFixed(1)+','+(cy+R*axes[i].c*Math.sin(a)).toFixed(1)+' ';
-      if(opts.ghost)gp+=(cx+R*axes[i].p*Math.cos(a)).toFixed(1)+','+(cy+R*axes[i].p*Math.sin(a)).toFixed(1)+' ';}
-    var grad='<defs><radialGradient id="'+el+'g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="'+C.good+'" stop-opacity="0.5"/><stop offset="55%" stop-color="'+C.gold+'" stop-opacity="0.38"/><stop offset="100%" stop-color="'+C.danger+'" stop-opacity="0.28"/></radialGradient></defs>';
-    var ghost=opts.ghost?'<polygon points="'+gp+'" fill="rgba(120,125,135,0.08)" stroke="'+C.low+'" stroke-width="1.1" stroke-dasharray="3 3"/>':'';
-    s.innerHTML=grad+rings+spokes+ghost+'<polygon points="'+dp+'" fill="url(#'+el+'g)" stroke="'+C.gold+'" stroke-width="1.8"/>'+labels;}
+      var lx=cx+(R+20)*Math.cos(a),ly=cy+(R+20)*Math.sin(a);labels+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" fill="'+C.mid+'" font-size="10" text-anchor="middle" dominant-baseline="middle">'+axes[i].l+'</text>';
+      dp+=(cx+R*axes[i].c*Math.cos(a)).toFixed(1)+','+(cy+R*axes[i].c*Math.sin(a)).toFixed(1)+' ';gp+=(cx+R*axes[i].p*Math.cos(a)).toFixed(1)+','+(cy+R*axes[i].p*Math.sin(a)).toFixed(1)+' ';}
+    var grad='<defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="'+C.good+'" stop-opacity="0.5"/><stop offset="55%" stop-color="'+C.gold+'" stop-opacity="0.38"/><stop offset="100%" stop-color="'+C.danger+'" stop-opacity="0.28"/></radialGradient></defs>';
+    s.innerHTML=grad+rings+spokes+'<polygon points="'+gp+'" fill="rgba(120,125,135,0.08)" stroke="'+C.low+'" stroke-width="1.1" stroke-dasharray="3 3"/><polygon points="'+dp+'" fill="url(#rg)" stroke="'+C.gold+'" stroke-width="1.8"/>'+labels;}
 
-  // header + kpis + hyps
-  document.getElementById('hdr-day').textContent=D.meta.day;
-  document.getElementById('hdr-range').textContent=D.meta.range;
-  document.getElementById('foot-sync').textContent='actualizado: '+D.meta.lastSync;
-  document.getElementById('kpis').innerHTML=D.kpis.map(function(k,i){return '<div class="kpi"><div class="top"><span class="lbl"><span class="pd '+k.pd+'" style="animation-delay:'+(i*0.15)+'s"></span>'+k.lbl+'</span><span class="badge '+k.bcls+'">'+k.badge+'</span></div><div class="val">'+k.val+'<small>'+k.unit+'</small></div><div class="meta">'+k.meta+'</div></div>';}).join('');
-  document.getElementById('hyp').innerHTML=D.hyps.map(function(h){return '<div class="hyp"><div class="st '+h.s+'">'+h.st+'</div><div class="q">'+h.q+'</div><div class="d">'+h.d+'</div><div class="act">'+h.a+'</div></div>';}).join('');
+  var $=function(id){return document.getElementById(id);};
+  var last=function(a){return a[a.length-1];},avg=function(a){return a.length?a.reduce(function(s,x){return s+x;},0)/a.length:0;};
+  $('hdr-day').textContent=D.meta.day;$('hdr-range').textContent=D.meta.range;$('foot-sync').textContent='actualizado: '+D.meta.lastSync;
+  $('kpis').innerHTML=D.kpis.map(function(k,i){return '<div class="kpi"><div class="top"><span class="lbl"><span class="pd '+k.pd+'" style="animation-delay:'+(i*0.15)+'s"></span>'+k.lbl+'</span><span class="badge '+k.bcls+'">'+k.badge+'</span></div><div class="val">'+k.val+'<small>'+k.unit+'</small></div><div class="meta">'+k.meta+'</div></div>';}).join('');
+  $('hyp').innerHTML=D.hyps.map(function(h){return '<div class="hyp"><div class="st '+h.s+'">'+h.st+'</div><div class="q">'+h.q+'</div><div class="d">'+h.d+'</div><div class="act">'+h.a+'</div></div>';}).join('');
+  if(D.weight.length)$('n-weight').textContent=last(D.weight)[1].toFixed(1)+' kg';
+  if(D.volWeek.length)$('n-vol').textContent=last(D.volWeek).toFixed(1)+'k';
+  if(D.nutri.length){$('n-prot').textContent='prom '+Math.round(avg(D.nutri.map(function(r){return r[2];})))+' g';var kc=D.nutri.filter(function(r){return r[1]!=null;});$('n-kcal').textContent=kc.length?'prom '+Math.round(avg(kc.map(function(r){return r[1];}))):'—';}
+  $('n-macros').textContent=D.macros.length+' días';
+  if(D.sleep.length)$('n-slpen').textContent='sueño '+avg(D.sleep.map(function(r){return r[1];})).toFixed(1)+'h · energía '+avg(D.energia.map(function(r){return r[1];})).toFixed(1);
+  if(D.legsMax.length)$('n-str').textContent='Legs '+last(D.legsMax)[1]+' · Pull '+last(D.pullMax)[1]+' · Push '+last(D.pushMax)[1];
+  $('n-run').textContent=D.runs.length+' corridas';
+  if(D.kcalEnt.length)$('n-kent').textContent='última '+last(D.kcalEnt)[1]+' kcal';
+  if(D.pillars[0].length)$('n-pill').textContent='sem '+D.pillars[0].length;
+  radar('radar',D.radar);
 
-  function last(a){return a[a.length-1];}
-  function avg(a){return a.reduce(function(s,x){return s+x;},0)/a.length;}
-  document.getElementById('n-weight').textContent=last(D.weight)[1].toFixed(1)+' kg ▼';
-  document.getElementById('n-vol').textContent=last(D.volWeek).toFixed(1)+'k';
-  document.getElementById('n-prot').textContent='prom '+Math.round(avg(D.nutri.map(function(r){return r[2];})))+' g';
-  document.getElementById('n-kcal').textContent='prom '+Math.round(avg(D.nutri.map(function(r){return r[1];})));
-  document.getElementById('n-macros').textContent=D.macros.length+' días';
-  document.getElementById('n-sleep').textContent='prom '+avg(D.sleep.map(function(r){return r[1];})).toFixed(1)+' h';
-  document.getElementById('n-ener').textContent='prom '+avg(D.energia.map(function(r){return r[1];})).toFixed(1);
-  document.getElementById('n-str').textContent='Legs '+last(D.legsMax)[1]+' · Pull '+last(D.pullMax)[1]+' · Push '+last(D.pushMax)[1];
-  document.getElementById('n-run').textContent=D.runs.length+' corridas';
-
-  // radares
-  radar('radar',D.radar,{ghost:true});
-  radar('suppRadar',D.suppRadar.map(function(a){return {l:a.l,c:a.v,p:0};}),{ghost:false});
-
-  // pillars
-  (function(){var pl=D.pillarWeeks,y0=0,y1=130,pn=pl.length,cols=[C.blue,C.gold,C.teal];
-    function xw(i){return PL+(i/(pn-1))*(W-PL-PR);}
-    var inner=grid(y0,y1,4,function(v){return Math.round(v)+'%';});
+  (function(){var pl=D.pillarWeeks,y0=0,y1=130,pn=pl.length,cols=[C.blue,C.gold,C.teal];if(!pn)return;
+    function xw(i){return PL+(pn>1?i/(pn-1):0)*(W-PL-PR);}var inner=grid(y0,y1,4,function(v){return Math.round(v)+'%';});
     var r=ymap(100,y0,y1);inner+='<line x1="'+PL+'" y1="'+r.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+r.toFixed(1)+'" stroke="'+C.gold+'" stroke-width="1" stroke-dasharray="5 4" opacity="0.7"/><text class="axis" x="'+(W-PR)+'" y="'+(r-5).toFixed(1)+'" text-anchor="end" fill="'+C.gold+'">meta 100%</text>';
-    pl.forEach(function(lb,i){inner+='<text class="axis" x="'+xw(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+lb+'</text>';});
+    pl.forEach(function(lb,i){inner+='<text class="axis" x="'+xw(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+lb.replace('Sem ','S')+'</text>';});
     D.pillars.forEach(function(v,pi){var d='';v.forEach(function(val,i){d+=(i?' L':'M')+xw(i).toFixed(1)+' '+ymap(val,y0,y1).toFixed(1);});
       inner+='<path d="'+d+'" fill="none" stroke="'+cols[pi]+'" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>';
-      v.forEach(function(val,i){inner+='<circle cx="'+xw(i).toFixed(1)+'" cy="'+ymap(val,y0,y1).toFixed(1)+'" r="3" fill="'+cols[pi]+'"/>';});
-      var li=v.length-1;inner+='<text x="'+(xw(li)+7).toFixed(1)+'" y="'+(ymap(v[li],y0,y1)+4).toFixed(1)+'" fill="'+cols[pi]+'" font-size="12" font-weight="700">'+v[li]+'%</text>';});
-    document.getElementById('c-pillars').innerHTML=svg(250,inner);})();
+      v.forEach(function(val,i){inner+='<circle cx="'+xw(i).toFixed(1)+'" cy="'+ymap(val,y0,y1).toFixed(1)+'" r="3" fill="'+cols[pi]+'"><title>'+pl[i]+': '+val+'%</title></circle>';});});
+    $('c-pillars').innerHTML=svg(240,inner);})();
 
-  // weekday grouped bars
-  (function(){var wd=D.weekday,n=wd.dias.length,inner=grid(0,100,4,function(v){return Math.round(v)+'%';});
-    var gap=(W-PL-PR)/n,bw=gap*0.28;
-    wd.dias.forEach(function(lb,i){
-      var cx=PL+gap*i+gap/2;
-      var xc=cx-bw-2,yc=ymap(wd.comida[i],0,100);
-      inner+='<rect x="'+xc.toFixed(1)+'" y="'+yc.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-yc).toFixed(1)+'" rx="2" fill="'+C.gold+'" opacity="0.92"/>';
-      var xe=cx+2,ye=ymap(wd.entreno[i],0,100);
-      inner+='<rect x="'+xe.toFixed(1)+'" y="'+ye.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-ye).toFixed(1)+'" rx="2" fill="'+C.blue+'" opacity="0.92"/>';
-      inner+='<text class="axis" x="'+cx.toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+lb+'</text>';
-    });
-    document.getElementById('c-weekday').innerHTML=svg(210,inner);})();
+  (function(){var wd=D.weekday,n=wd.dias.length;if(!n)return;var inner=grid(0,100,4,function(v){return Math.round(v)+'%';});var gap=(W-PL-PR)/n,bw=gap*0.28;
+    wd.dias.forEach(function(lb,i){var cx=PL+gap*i+gap/2;
+      var xc=cx-bw-2,yc=ymap(wd.comida[i],0,100);inner+='<rect x="'+xc.toFixed(1)+'" y="'+yc.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-yc).toFixed(1)+'" rx="2" fill="'+C.gold+'" opacity="0.92"><title>'+lb+' · comida '+wd.comida[i]+'%</title></rect>';
+      var xe=cx+2,ye=ymap(wd.entreno[i],0,100);inner+='<rect x="'+xe.toFixed(1)+'" y="'+ye.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-ye).toFixed(1)+'" rx="2" fill="'+C.blue+'" opacity="0.92"><title>'+lb+' · entreno '+wd.entreno[i]+'%</title></rect>';
+      inner+='<text class="axis" x="'+cx.toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+lb+'</text>';});
+    $('c-weekday').innerHTML=svg(210,inner);})();
 
-  // supplement frequency (horizontal bars)
-  (function(){var items=D.supp,n=items.length,rowH=(H-PT-PB)/n,maxv=Math.max.apply(null,items.map(function(s){return s.days;})),LB=140;
-    var inner='';
-    for(var g=0;g<=maxv;g++){var x=LB+(g/maxv)*(W-PR-LB);inner+='<line class="gl" x1="'+x.toFixed(1)+'" y1="'+PT+'" x2="'+x.toFixed(1)+'" y2="'+(H-PB)+'"/><text class="axis" x="'+x.toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle">'+g+'</text>';}
+  (function(){var items=D.supp.filter(function(s){return s.days>0;});if(!items.length)return;var n=items.length,rowH=(H-PT-PB)/n,maxv=Math.max.apply(null,items.map(function(s){return s.days;})),LB=118;
+    var inner='';for(var g=0;g<=maxv;g+=Math.max(1,Math.round(maxv/5))){var x=LB+(g/maxv)*(W-PR-LB);inner+='<line class="gl" x1="'+x.toFixed(1)+'" y1="'+PT+'" x2="'+x.toFixed(1)+'" y2="'+(H-PB)+'"/><text class="axis" x="'+x.toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle">'+g+'</text>';}
     items.forEach(function(s,i){var y=PT+rowH*i+rowH*0.5,h=rowH*0.5,col=CATC[s.cat]||C.gold,w=(s.days/maxv)*(W-PR-LB);
-      inner+='<text x="'+(LB-8)+'" y="'+(y+2).toFixed(1)+'" text-anchor="end" fill="'+C.hi+'" font-size="11.5">'+s.name+'</text>';
-      inner+='<text x="'+(LB-8)+'" y="'+(y+13).toFixed(1)+'" text-anchor="end" fill="'+col+'" font-size="8.5">'+s.cat+'</text>';
-      inner+='<rect x="'+LB+'" y="'+(y-h/2).toFixed(1)+'" width="'+Math.max(w,3).toFixed(1)+'" height="'+h.toFixed(1)+'" rx="3" fill="'+col+'" opacity="0.9"/>';
-      inner+='<text x="'+(LB+Math.max(w,3)+6).toFixed(1)+'" y="'+(y+3).toFixed(1)+'" fill="'+col+'" font-size="10.5" font-weight="700">'+s.days+'d</text>';});
-    document.getElementById('c-supp').innerHTML=svg(215,inner);})();
+      inner+='<text x="'+(LB-8)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" fill="'+C.hi+'" font-size="11.5">'+s.name+'</text>';
+      inner+='<rect x="'+LB+'" y="'+(y-h/2).toFixed(1)+'" width="'+Math.max(w,3).toFixed(1)+'" height="'+h.toFixed(1)+'" rx="3" fill="'+col+'" opacity="0.9"><title>'+s.name+' · '+s.cat+' · '+s.days+' días</title></rect>';
+      inner+='<text x="'+(LB+Math.max(w,3)+6).toFixed(1)+'" y="'+(y+3.5).toFixed(1)+'" fill="'+col+'" font-size="10.5" font-weight="700">'+s.days+'d</text>';});
+    $('c-supp').innerHTML=svg(210,inner);
+    var cats=[];items.forEach(function(s){if(cats.indexOf(s.cat)<0)cats.push(s.cat);});
+    $('supp-leg').innerHTML=cats.map(function(c){return '<span><i style="background:'+(CATC[c]||C.gold)+'"></i>'+c+'</span>';}).join('');})();
 
-  // running combo
-  (function(){var runs=D.runs,n=runs.length,gap=(W-PL-PR)/n,y0=0,y1=6;
-    function xc(i){return PL+gap*i+gap/2;}
-    var inner=grid(y0,y1,3,function(v){return v.toFixed(0);}),bw=gap*0.32;
-    runs.forEach(function(r,i){var x=xc(i)-bw/2,y=ymap(r.k,y0,y1);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="2" fill="'+C.teal+'" opacity="0.5"/><text x="'+xc(i).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="'+C.teal+'" font-size="10.5" font-weight="700">'+r.k.toFixed(1)+'</text>';});
-    function pcY(pc){var t=(pc-5.5)/(7.5-5.5);return PT+8+t*(H-PT-PB-16);}
-    var pd='';runs.forEach(function(r,i){pd+=(i?' L':'M')+xc(i).toFixed(1)+' '+pcY(r.pc).toFixed(1);});
+  (function(){var runs=D.runs,n=runs.length;if(!n)return;var gap=(W-PL-PR)/n,y0=0,y1=6;
+    function xc(i){return PL+gap*i+gap/2;}var inner=grid(y0,y1,3,function(v){return v.toFixed(0);}),bw=gap*0.32;
+    runs.forEach(function(r,i){var x=xc(i)-bw/2,y=ymap(r.k,y0,y1);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="2" fill="'+C.teal+'" opacity="0.5"><title>'+r.d+': '+r.k+' km</title></rect><text x="'+xc(i).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="'+C.teal+'" font-size="10.5" font-weight="700">'+r.k.toFixed(1)+'</text>';});
+    function pcY(pc){var t=(pc-5.5)/2;return PT+8+t*(H-PT-PB-16);}var pd='';runs.forEach(function(r,i){pd+=(i?' L':'M')+xc(i).toFixed(1)+' '+pcY(r.pc).toFixed(1);});
     inner+='<path d="'+pd+'" fill="none" stroke="'+C.gold+'" stroke-width="2.4"/>';
     runs.forEach(function(r,i){var y=pcY(r.pc),mm=Math.floor(r.pc),ss=Math.round((r.pc-mm)*60);inner+='<circle cx="'+xc(i).toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.6" fill="'+C.gold+'"/><text x="'+xc(i).toFixed(1)+'" y="'+(y-8).toFixed(1)+'" text-anchor="middle" fill="'+C.gold+'" font-size="10" font-weight="700">'+mm+':'+(ss<10?'0':'')+ss+'</text>';});
-    function fcY(f){var t=(f-130)/(170-130);return (H-PB)-t*(H-PT-PB-16);}
-    var fd='';runs.forEach(function(r,i){fd+=(i?' L':'M')+xc(i).toFixed(1)+' '+fcY(r.f).toFixed(1);});
+    function fcY(f){var t=(f-130)/40;return (H-PB)-t*(H-PT-PB-16);}var fd='';runs.forEach(function(r,i){fd+=(i?' L':'M')+xc(i).toFixed(1)+' '+fcY(r.f).toFixed(1);});
     inner+='<path d="'+fd+'" fill="none" stroke="'+C.danger+'" stroke-width="1.8" stroke-dasharray="4 3"/>';
     runs.forEach(function(r,i){var y=fcY(r.f);inner+='<circle cx="'+xc(i).toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3" fill="'+C.danger+'"/><text x="'+xc(i).toFixed(1)+'" y="'+(y+15).toFixed(1)+'" text-anchor="middle" fill="'+C.danger+'" font-size="9.5">'+r.f+'</text>';});
     runs.forEach(function(r,i){inner+='<text class="axis" x="'+xc(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">'+r.d+'</text>';});
-    document.getElementById('c-run').innerHTML=svg(215,inner);})();
+    $('c-run').innerHTML=svg(215,inner);})();
 
-  // daily charts
-  bars('c-energia',P(D.energia),{y0:0,y1:5,st:5,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return Math.round(v);},ref:4,rc:C.gold,rl:"meta 4",cf:function(v){return v>=4?C.good:(v>=3?C.warn:C.danger);}});
-  bars('c-sleep',P(D.sleep),{y0:0,y1:10,st:5,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return Math.round(v);},ref:7,rc:C.warn,rl:"7 h",cf:function(v){return v<6?C.danger:(v<7?C.warn:C.good);}});
-  bars('c-prot',P(D.nutri.map(function(r){return[r[0],r[2]];})),{y0:0,y1:280,st:4,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return Math.round(v);},ref:180,rc:C.gold,rl:"meta 180",cf:function(v){return v>=180?C.good:(v>=160?C.warn:C.danger);}});
-  bars('c-kcal',P(D.nutri.map(function(r){return[r[0],r[1]];})),{y0:0,y1:4000,st:4,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return (v/1000).toFixed(1)+'k';},ref:2550,rc:C.low,rl:"2500–2600",cf:function(){return C.gold;}});
-  stacked('c-macros',D.macros.map(function(r){return[di(r[0]),r[1],r[2],r[3]];}),[{i:1,c:C.gold},{i:2,c:C.blue},{i:3,c:C.purple}],{y0:0,y1:650,st:4,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return Math.round(v);}});
-  lines('c-strength',[{color:C.blue,pts:P(D.pushMax)},{color:C.teal,pts:P(D.pullMax)},{color:C.gold,pts:P(D.legsMax),dots:true}],{y0:100,y1:160,st:4,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return Math.round(v);}});
-  lines('c-weight',[{color:C.good,area:true,pts:P(D.weight),f:function(v){return v.toFixed(1);}}],{y0:94,y1:100,st:3,xm:XMAX,a:"19 jun",b:"hoy",fmt:function(v){return v.toFixed(1);},ref:95,rc:C.good,rl:"obj 95"});
+  (function(){var sl=P(D.sleep),en=P(D.energia),y0=0,y1=10,inner=grid(y0,y1,5,function(v){return Math.round(v);});var bw=(W-PL-PR)/XMAX*0.66;
+    sl.forEach(function(r){var x=xmap(r[0])-bw/2,y=ymap(Math.min(r[1],y1),y0,y1);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="1.5" fill="'+C.blue+'" opacity="0.45">'+tt(r[0],r[1],'h')+'</rect>';});
+    var d='';en.forEach(function(r,i){d+=(i?' L':'M')+xmap(r[0]).toFixed(1)+' '+ymap(r[1]*2,y0,y1).toFixed(1);});
+    inner+='<path d="'+d+'" fill="none" stroke="'+C.gold+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>';
+    en.forEach(function(r){inner+='<circle cx="'+xmap(r[0]).toFixed(1)+'" cy="'+ymap(r[1]*2,y0,y1).toFixed(1)+'" r="2.6" fill="'+C.gold+'">'+tt(r[0],r[1],'/5')+'</circle>';});
+    inner+=refl(7,y0,y1,C.warn,"7 h");inner+=xdates();$('c-slpen').innerHTML=svg(230,inner);})();
 
-  // weekly volume
-  (function(){var vals=D.volWeek,n=vals.length,inner=grid(0,55,4,function(v){return Math.round(v)+'k';});
-    inner+=refl(40,0,55,C.low,"meta ~40k");var gap=(W-PL-PR)/n,bw=gap*0.5;
-    vals.forEach(function(v,i){var x=PL+gap*i+(gap-bw)/2,y=ymap(v,0,55);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="2" fill="'+C.gold+'" opacity="0.92"/><text class="axis" x="'+(x+bw/2).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="'+C.hi+'" font-weight="700">'+v.toFixed(0)+'k</text><text class="axis" x="'+(x+bw/2).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">S'+(i+1)+'</text>';});
-    document.getElementById('c-vol').innerHTML=svg(205,inner);})();
+  if(D.nutri.length){bars('c-prot',P(D.nutri.map(function(r){return[r[0],r[2]];})),{y0:0,y1:300,st:4,u:' g',fmt:function(v){return Math.round(v);},ref:180,rc:C.gold,rl:"meta 180",cf:function(v){return v>=180?C.good:(v>=160?C.warn:C.danger);}});
+    var kc=D.nutri.filter(function(r){return r[1]!=null;});bars('c-kcal',P(kc.map(function(r){return[r[0],r[1]];})),{y0:0,y1:5000,st:5,u:' kcal',fmt:function(v){return (v/1000).toFixed(1)+'k';},ref:2600,rc:C.low,rl:"~2600",cf:function(){return C.gold;}});}
+  if(D.macros.length)stacked('c-macros',D.macros.map(function(r){return[di(r[0]),r[1],r[2],r[3],r[4]];}),[{i:1,c:C.gold,n:'Prot'},{i:2,c:C.blue,n:'Carbos'},{i:3,c:C.purple,n:'Grasa'},{i:4,c:'#3a3f48',n:'Resto s/desglose'}],{y0:0,y1:900,st:3,fmt:function(v){return Math.round(v);}});
+  if(D.legsMax.length)lines('c-strength',[{color:C.blue,pts:P(D.pushMax),u:' kg'},{color:C.teal,pts:P(D.pullMax),u:' kg'},{color:C.gold,pts:P(D.legsMax),u:' kg'}],{y0:100,y1:160,st:4,fmt:function(v){return Math.round(v);}});
+  if(D.weight.length)lines('c-weight',[{color:C.good,area:true,pts:P(D.weight),u:' kg',f:function(v){return v.toFixed(1);}}],{y0:94,y1:101,st:3,fmt:function(v){return v.toFixed(1);},ref:95,rc:C.good,rl:"obj 95"});
+  if(D.kcalEnt.length)(function(){var TC={Push:C.blue,Pull:C.teal,Legs:C.gold,Hybrid:C.purple,Hyrox:C.purple,Otro:C.danger,Escalada:C.good,Climbing:C.good};
+    var y0=0,y1=1600,inner=grid(y0,y1,4,function(v){return Math.round(v);}),bw=(W-PL-PR)/XMAX*0.66;
+    D.kcalEnt.forEach(function(r){var dx=di(r[0]),x=xmap(dx)-bw/2,y=ymap(Math.min(r[1],y1),y0,y1),col=TC[r[2]]||C.teal;
+      inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="1.5" fill="'+col+'" opacity="0.92"><title>'+fmtD(dx)+' · '+r[2]+': '+r[1]+' kcal</title></rect>';});
+    inner+=xdates();$('c-kcalent').innerHTML=svg(205,inner);
+    var cats=[];D.kcalEnt.forEach(function(r){if(cats.indexOf(r[2])<0)cats.push(r[2]);});
+    $('kent-leg').innerHTML=cats.map(function(c){return '<span><i style="background:'+(TC[c]||C.teal)+'"></i>'+c+'</span>';}).join('');})();
+
+  (function(){var vals=D.volWeek,n=vals.length;if(!n)return;var inner=grid(0,70,4,function(v){return Math.round(v)+'k';});
+    inner+=refl(40,0,70,C.low,"meta ~40k");var gap=(W-PL-PR)/n,bw=gap*0.5;
+    vals.forEach(function(v,i){var x=PL+gap*i+(gap-bw)/2,y=ymap(v,0,70);inner+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(H-PB-y).toFixed(1)+'" rx="2" fill="'+C.gold+'" opacity="0.92"><title>Sem '+(i+1)+': '+v+'k</title></rect><text class="axis" x="'+(x+bw/2).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" text-anchor="middle" fill="'+C.hi+'" font-weight="700">'+v.toFixed(0)+'k</text><text class="axis" x="'+(x+bw/2).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle">S'+(i+1)+'</text>';});
+    $('c-vol').innerHTML=svg(205,inner);})();
+})();
+</script>
+
+<script>
+/* Prioridad de ajuste */
+(function(){var C={good:'#4ADE80',danger:'#E5484D',warn:'#E8B339',low:'#5F636B'};
+  var prio=[
+   {u:'danger',k:'Cardio / running',v:'4 corridas GPS en 70 días',a:'2 salidas/sem — el eje más flojo'},
+   {u:'danger',k:'Cortisol / estrés',v:'0 suplementación',a:'retomá ashwagandha/melena si el sueño o el ánimo caen'},
+   {u:'warn',k:'Grasa en findes',v:'picos de 130–177 g (meta 60–80)',a:'cortá fuentes ocultas los fines de semana'},
+   {u:'warn',k:'Proteína',v:'prom 165 g, cae &lt;160 los findes',a:'piso 180 g TODOS los días'},
+   {u:'warn',k:'Sueño',v:'2 h el 15/8 · prom 7.2',a:'proteger la última hora antes de dormir'},
+   {u:'good',k:'Calorías',v:'controladas salvo el finde 1–2/8 (4.300)',a:'ancla los fines de semana'}];
+  var cm={good:C.good,warn:C.warn,danger:C.danger};
+  var el=document.getElementById('x-prio');if(el)el.innerHTML=prio.map(function(r){return '<div class="xrow"><span class="xdot" style="background:'+cm[r.u]+'"></span><span class="xl"><b>'+r.k+'</b> · <span style="color:'+C.low+'">'+r.v+'</span></span><span class="xv" style="color:'+cm[r.u]+';font-size:11px">'+r.a+'</span></div>';}).join('');
 })();
 </script>
 </body>
