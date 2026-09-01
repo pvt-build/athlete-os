@@ -256,23 +256,21 @@ def build(ci, co, en, ru):
     cat_days = {s["cat"]:s["days"] for s in supp}
     suppRadar = [{"l":c,"v":round(min(1.0, cat_days.get(c,0)/6),2)} for c in CAT_ORDER]
 
-    # radar atlético
-    prot_recent = [r["prot"] for f,r in best.items() if r["prot"] is not None and date.fromisoformat(f) >= today-timedelta(days=14)]
-    ener_recent = [r["energia"] for r in ci if r["f"] and r["energia"] is not None and date.fromisoformat(r["f"]) >= today-timedelta(days=14)]
-    sleep_recent = [v for f,v in sleep if date.fromisoformat(f) >= today-timedelta(days=14)]
+    # radar atlético — criterio ÚNICO para los 4 ejes: sesiones de esa disciplina en los
+    # últimos 14 días ÷ su meta de frecuencia. Mismo lente en todos, por eso son comparables.
     clamp = lambda x: round(max(0.1, min(1.0, x)), 2)
-    lastmax = lambda a: a[-1][1] if a else 0
-    kmrec = (kmW[nweeks-1] if nweeks else 0) + (kmW[nweeks-2] if nweeks > 1 else 0)
-    intens = [r for r in en if r["f"] and date.fromisoformat(r["f"]) >= today-timedelta(days=14)
-              and (r["tipo"] in ("Hybrid","Hyrox") or (r["tipo"]=="Otro" and (r.get("fc") or 0) >= 140))]
-    # balance por los 4 deportes reales: Gym · Running · Hybrid · Escalada
-    hyb = len([r for r in en if r["f"] and date.fromisoformat(r["f"]) >= today-timedelta(days=21) and r["tipo"] in ("Hybrid","Hyrox")])
-    esc = len([r for r in en if r["f"] and (r["tipo"] or "") in ("Escalada","Climbing","Boulder")])
-    cr = [clamp(max(lastmax(pushMax), lastmax(pullMax), lastmax(legsMax))/160),  # Gym (fuerza+volumen)
-          clamp(kmrec/16),                                                       # Running
-          clamp(hyb/3),                                                          # Hybrid
-          clamp(esc/5) if esc else 0.1]                                          # Escalada (sin registrar aún)
-    radar = [{"l":l,"c":c,"p":clamp(c*0.9)} for l,c in zip(["Gym","Running","Hybrid","Escalada"], cr)]
+    def _cnt(pred, d0, d1):  # entrenos con d1 <= antigüedad(días) < d0 que cumplen pred
+        return len([r for r in en if r["f"] and d1 <= (today - date.fromisoformat(r["f"])).days < d0 and pred(r)])
+    def _runs(d0, d1):
+        return len([r for r in ru if r["f"] and r.get("km") and d1 <= (today - date.fromisoformat(r["f"])).days < d0])
+    _gym = lambda r: (r["tipo"] or "") in ("Push","Pull","Legs","Full Body")
+    _hyb = lambda r: (r["tipo"] or "") in ("Hybrid","Hyrox")
+    _esc = lambda r: (r["tipo"] or "") in ("Escalada","Climbing","Boulder")
+    RADAR_META = {"Gym":8, "Running":4, "Hybrid":4, "Escalada":2}  # sesiones esperadas en 14 días
+    _cur  = {"Gym":_cnt(_gym,14,0),  "Running":_runs(14,0),  "Hybrid":_cnt(_hyb,14,0),  "Escalada":_cnt(_esc,14,0)}
+    _prev = {"Gym":_cnt(_gym,28,14), "Running":_runs(28,14), "Hybrid":_cnt(_hyb,28,14), "Escalada":_cnt(_esc,28,14)}
+    _eje = lambda l, n: clamp(n/RADAR_META[l]) if n else 0.1
+    radar = [{"l":l, "c":_eje(l,_cur[l]), "p":_eje(l,_prev[l])} for l in ["Gym","Running","Hybrid","Escalada"]]
     # kcal quemadas por entreno (sumadas por día, del reloj)
     kbd = {}
     for r in en:
