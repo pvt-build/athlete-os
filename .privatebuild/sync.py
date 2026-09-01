@@ -156,10 +156,12 @@ def load():
            "grasa": num(p["properties"],"Total Grasa (g)")} for p in query_db(DB["comidas"])]
     en = [{"f": dt(p["properties"],"Fecha"), "tipo": sel(p["properties"],"Tipo"),
            "vol": num(p["properties"],"Volumen Total kg"), "emax": num(p["properties"],"Esfuerzo Máx (kg)"),
-           "kcal": num(p["properties"],"Kcal Totales"), "fc": num(p["properties"],"FC Promedio (lpm)")}
+           "kcal": num(p["properties"],"Kcal Totales"), "fc": num(p["properties"],"FC Promedio (lpm)"),
+           "burpees": num(p["properties"],"Burpees (reps)")}
           for p in query_db(DB["entreno"])]
     ru = [{"f": dt(p["properties"],"Fecha"), "km": num(p["properties"],"Distancia (km)"),
-           "pace": num(p["properties"],"Ritmo (min/km)"), "fc": num(p["properties"],"FC Promedio (lpm)")}
+           "pace": num(p["properties"],"Ritmo (min/km)"), "fc": num(p["properties"],"FC Promedio (lpm)"),
+           "kcal": num(p["properties"],"Kcal Totales")}
           for p in query_db(DB["running"])]
     # Deriva kcal cuando falta pero hay macros (4·P + 4·C + 9·G): un día con comida no se cae del dashboard por un campo kcal vacío
     for r in co:
@@ -278,7 +280,14 @@ def build(ci, co, en, ru):
             e = kbd.setdefault(r["f"], {"kcal": 0, "tipo": r["tipo"], "top": 0})
             e["kcal"] += r["kcal"]
             if r["kcal"] > e["top"]: e["top"] = r["kcal"]; e["tipo"] = r["tipo"]
+    for r in ru:  # running del reloj → también entra al gráfico de kcal por tipo, como "Running"
+        if r["f"] and r.get("kcal") is not None:
+            e = kbd.setdefault(r["f"], {"kcal": 0, "tipo": "Running", "top": 0})
+            e["kcal"] += r["kcal"]
+            if r["kcal"] > e["top"]: e["top"] = r["kcal"]; e["tipo"] = "Running"
     kcalEnt = sorted([[f, round(e["kcal"]), e["tipo"]] for f, e in kbd.items()])
+    # burpees por sesión (Hyrox/Hybrid): progresión de reps en la estación de burpees
+    burpees = sorted([[r["f"], round(r["burpees"])] for r in en if r.get("burpees") is not None])
 
     # KPIs
     prot_avg = round(avg([r[2] for r in nutri])); kcal_avg = round(avg([r[1] for r in nutri]))
@@ -317,7 +326,7 @@ def build(ci, co, en, ru):
         "kpis":kpis,"weight":weight,"pushMax":pushMax,"pullMax":pullMax,"legsMax":legsMax,
         "volWeek":volWeek,"nutri":nutri,"macros":macros,"sleep":sleep,"energia":energia,"weeks":weeks,
         "pillars":pillars,"pillarWeeks":[f"Sem {i+1}" for i in range(nweeks)],
-        "runs":runs,"weekday":weekday,"supp":supp,"suppRadar":suppRadar,"radar":radar,"kcalEnt":kcalEnt,"hyps":HYPS,
+        "runs":runs,"weekday":weekday,"supp":supp,"suppRadar":suppRadar,"radar":radar,"kcalEnt":kcalEnt,"burpees":burpees,"hyps":HYPS,
     }
 
 HYPS = [
